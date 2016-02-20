@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mxbc.entity.Customer" table="customer">
+		<id name="c_id">
+			<!-- native主键自增长 数据库生成-->
+			<!-- uuid产生唯一值，字符串类型 -->
+			<generator class="native"/>
+		</id>
+		<!-- column定义列的名字 length定义字段长度 unique是否唯一 not-null不能为空-->
+		<property name="c_num"/>
+		<property name="c_name"/>
+		<property name="c_phone"/>
+		<property name="c_address"/>
+		<property name="c_area"/>
+		<property name="w_name"/>
+		<property name="w_phone"/>
+		<property name="c_state"/>
+		<property name="c_time"/>
+	</class>
+</hibernate-mapping>

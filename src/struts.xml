@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="addCusAction" class="com.mxbc.action.CustomerAction"
+			method="add">
+			<result name="success" type="redirect">/findAllCusAction</result>
+		</action>
+
+		<action name="deleteCusAction" class="com.mxbc.action.CustomerAction"
+			method="delete">
+			<result name="success" type="redirect">/findAllCusAction</result>
+		</action>
+
+		<action name="toUpdateCusAction" class="com.mxbc.action.CustomerAction"
+			method="toUpdate">
+			<result name="success">/edit_customer.jsp</result>
+		</action>
+
+		<action name="updateCusAction" class="com.mxbc.action.CustomerAction"
+			method="update">
+			<result name="success" type="redirect">/findAllCusAction</result>
+		</action>
+
+		<action name="findAllCusAction" class="com.mxbc.action.CustomerAction"
+			method="findAll">
+			<result name="success">/pages/list_customer.jsp</result>
+		</action>
+
+		<action name="findByNameCusEmpAction" class="com.mxbc.action.CustomerAction"
+			method="findByNum">
+			<result name="success">/list_customer.jsp</result>
+		</action>
+		
+		<action name="loginAction" class="com.mxbc.action.LoginAction"
+			method="login">
+			<result name="success">/pages/frame_main.jsp</result>
+			<result name="error">/pages/login_mxbc.jsp</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,20 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3307/mxbc?useUnicode=true&amp;characterEncoding=utf8</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">950906</property>
+		
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<!-- ddl数据库定义语言 值为create（只要发布就会重新建表）或update（如果表存在，则在基础之上进行修改）-->
+		<property name="hbm2ddl.auto">update</property>
+		
+		<mapping resource="com/mxbc/entity/Customer.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>
