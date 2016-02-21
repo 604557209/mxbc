@@ -1,7 +1,5 @@
 package com.mxbc.action;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.factory.BeanFactory;
@@ -15,6 +13,7 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer>{
 	
+	private static final long serialVersionUID = -1056099330002321491L;
 	//private EmployeeDao employeeDao = EmployeeDaoImpl.getInstance();
 	BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext-*.xml");
 	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");

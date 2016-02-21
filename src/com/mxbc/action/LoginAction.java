@@ -3,6 +3,7 @@ package com.mxbc.action;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginAction extends ActionSupport {
+	private static final long serialVersionUID = -1399567227108158639L;
 	private String username;
 	private String password;
 	public String login(){

@@ -30,7 +30,13 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	}
 
 	public Customer findByNumDao(int c_num) {
-		return (Customer)getHibernateTemplate().find("from Customer as e where e.c_num="+c_num).get(0);
+		Customer customer = new Customer();
+		try{
+			customer = (Customer)getHibernateTemplate().find("from Customer as e where e.c_num="+c_num).get(0);
+		}catch(java.lang.Exception e){
+			return customer;
+		}
+		return customer;
 	}
 
 }
