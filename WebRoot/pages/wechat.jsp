@@ -14,36 +14,47 @@
 <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/logo/icon.png" media="screen"/>
 <link href="<c:url value='/css/bootstrap.min.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/mxbc-wechat.css'/>" rel="stylesheet">
+<script src="<c:url value='/js/jquery.min.js'/>"></script>
 <script type="text/javascript">
-	
+	function checkf(){
+		if($("#f_c_num").val() == '' || $("#f_c_name").val() == ''){
+			alert("请输入您的编号与姓名");
+		}else{
+			if(isNaN($("#f_c_num").val())){
+				alert("请输入正确的编号！");
+			}else{
+				$("#f_form").submit();
+			}
+		}
+	}
 </script>
 <body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);">
-	<form action="wechatFindByNum.action" method="post">
+	<form id="f_form" action="wechatFindByNum.action" method="post">
 	<header>
 		<nav>
-			<h1 class="nav_title" id="nav_title">顾客信息查询</h1>
+			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
 		</nav>
 		<section class="search_bar">
-			
-				<input name="c_num" type="text" class="search_bar_input" placeholder="请输入顾客信息编号"/>
-				<button type="submit" class="gray_small_btn">查询</button>
-			
+			<input id="f_c_num" name="c_num" type="text" class="search_bar_input" placeholder="请输入编号"/>
+			<input id="f_c_name" name="c_name" type="text" class="search_bar_input" placeholder="请输入您的姓名"/>
+			<button type="button" class="gray_small_btn" onclick="checkf();">查询</button>
 		</section>
 	</header>
 	</form>
 
 	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 480px; height: 616px; top: 98px;">
 		<div id="content" class="content android_content_fixed" style="display: block;">
+			<label style="color: red;text-align: center;width: 100%">${message}</label>
 			<div id="scroller" class="scroller">
 				<section class="section_padding">
 					<ul class="cell_container">
 						<li>
-							<div>顾客编号：<span id="wc_c_num">${customer.c_num}</span></div>
+							<div>客户编号：<span id="wc_c_num">${customer.c_num}</span></div>
 						</li>
 					</ul>
 				</section>
 				<section class="section_padding">
-					<h2 class="section_title">顾客信息</h2>
+					<h2 class="section_title">客户信息</h2>
 					<ul class="cell_container">
 						<li>
 							<div>姓名：<span id="wc_c_name">${customer.c_name}</span></div>
@@ -65,13 +76,13 @@
 					</ul>
 				</section>
 				<section class="section_padding">
-					<h2 class="section_title">店面督导信息</h2>
+					<h2 class="section_title">店面区域经理信息</h2>
 					<ul class="cell_container">
 						<li>
-							<div>督导姓名：<span id="wc_w_name">${customer.w_name}</span></div>
+							<div>区域经理姓名：<span id="wc_w_name">${customer.w_name}</span></div>
 						</li>
 						<li>
-							<div>督导电话：<span id="wc_w_phone">${customer.w_phone}</span></div>
+							<div>区域经理电话：<span id="wc_w_phone">${customer.w_phone}</span></div>
 						</li>
 					</ul>
 				</section>
@@ -79,7 +90,17 @@
 					<h2 class="section_title">当前状态</h2>
 					<ul class="cell_container">
 						<li>
-							<div>审核状态：<span id="wc_c_state">${customer.c_state}</span></div>
+							<div>审核状态：
+								<c:if test="${customer.c_state == 0}">
+									<span id="wc_c_state" style="color:blue">审核中</span>
+								</c:if>
+								<c:if test="${customer.c_state == 1}">
+									<span id="wc_c_state" style="color:green">审核通过</span>
+								</c:if>
+								<c:if test="${customer.c_state == 2}">
+									<span id="wc_c_state" style="color:red">审核未通过</span>
+								</c:if>
+							</div>
 						</li>
 					</ul>
 				</section>

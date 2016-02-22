@@ -9,7 +9,7 @@ import com.mxbc.entity.Customer;
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
 
 	public void addDao(Customer customer) {
-		getHibernateTemplate().save(customer);
+		super.getHibernateTemplate().save(customer);
 	}
 
 	public void delDao(int id) {
@@ -26,7 +26,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 
 	@SuppressWarnings("unchecked")
 	public List<Customer> findAllDao() {
-		return getHibernateTemplate().find("from Customer");
+		return super.getHibernateTemplate().find("from Customer");
 	}
 
 	public Customer findByNumDao(int c_num) {

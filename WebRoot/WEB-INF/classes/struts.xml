@@ -45,7 +45,7 @@
 		<action name="wechatFindByNum" class="com.mxbc.action.WeChatAction"
 			method="findByNum">
 			<result name="success">/pages/wechat.jsp</result>
-			<result name="error">/pages/wechat.jsp</result>
+			<result name="error" type="redirect">/pages/wechat.jsp</result>
 		</action>
 		
 	</package>

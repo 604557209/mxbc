@@ -6,6 +6,7 @@ public class Customer {
 	private int c_id;
 	private int c_num;
 	private String c_name;
+	private int c_sex;
 	private String c_phone;
 	private String c_address;
 	private String c_area;
@@ -31,6 +32,12 @@ public class Customer {
 	}
 	public void setC_name(String c_name) {
 		this.c_name = c_name;
+	}
+	public int getC_sex() {
+		return c_sex;
+	}
+	public void setC_sex(int c_sex) {
+		this.c_sex = c_sex;
 	}
 	public String getC_phone() {
 		return c_phone;

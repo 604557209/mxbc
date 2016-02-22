@@ -112,15 +112,17 @@ response.setDateHeader("Expires",0);
 	        $("#addpay_time").val(ok_time);
 		}
 		
-		function update_customer(num){
+		function update_customer(num,id){
+			$("#up_c_id").val(id);
 			$("#up_c_num").val($("#l_c_num_"+num).text());
 			$("#up_c_name").val($("#l_c_name_"+num).text());
+			$("#up_c_sex").val($("#l_c_sex_"+num).val());
 			$("#up_c_phone").val($("#l_c_phone_"+num).text());
 			$("#up_c_address").val($("#l_c_address_"+num).text());
 			$("#up_c_area").val($("#l_c_area_"+num).text());
 			$("#up_w_name").val($("#l_w_name_"+num).text());
 			$("#up_w_phone").val($("#l_w_phone_"+num).text());
-			$("#up_c_state").val($("#l_c_state_"+num).text());
+			$("#up_c_state").val($("#l_c_state_"+num).val());
 			$("#up_c_time").val($("#l_c_time_"+num).text());
 		}
     </script>
@@ -133,28 +135,37 @@ response.setDateHeader("Expires",0);
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="add_update_ModalLabel">修改该顾客信息：</h4>
+	        <h4 class="modal-title" id="add_update_ModalLabel">修改该客户信息：</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form name="test_id" id="test_id" action="Manager_AddressServlet?method=add" method="post">
+	        <form action="updateCusAction.action" method="post">
 	        	<table width="100%" style="line-height:32px">
-			  	</th>
+			  	<input type="hidden" name="c_id" id="up_c_id"/>
 			  	<tr>
 			  		<td width="125">编号</td>
 			  		<td>
-			  			<input readonly id="up_c_num" name="c_num" style="line-height:22px;font-size:13px"">
+			  			<input readonly id="up_c_num" name="c_num" style="line-height:22px;font-size:13px;background-color:#f1f2f3">
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">顾客姓名</td>
+			  		<td width="125">客户姓名</td>
 			  		<td>
-			  			<input id="up_c_name" name="c_name" style="line-height:22px;font-size:13px"">
+			  			<input id="up_c_name" name="c_name" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">顾客电话</td>
+			  		<td width="125">客户性别</td>
 			  		<td>
-			  			<input id="up_c_phone" name="c_phone" style="line-height:22px;font-size:13px"">
+						<select name="c_sex" id="up_c_sex">
+							<option value="0">先生</option>
+							<option value="1">女士</option>
+						</select>
+			  		</td>
+			  	</tr>
+			  	<tr>
+			  		<td width="125">客户电话</td>
+			  		<td>
+			  			<input id="up_c_phone" name="c_phone" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr>
@@ -172,37 +183,38 @@ response.setDateHeader("Expires",0);
 			  	<tr>
 			  		<td width="125">区域督导姓名</td>
 			  		<td>
-			  			<input id="up_w_name" name="w_name" style="line-height:22px;font-size:13px"">
+			  			<input id="up_w_name" name="w_name" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">督导电话</td>
 			  		<td>
-			  			<input id="up_w_phone" name="w_phone" style="line-height:22px;font-size:13px"">
+			  			<input id="up_w_phone" name="w_phone" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">信息状态</td>
 			  		<td>
-			  			<select>
-			  				<option>审核中</option>
-			  				<option>审核通过</option>
+			  			<select name="c_state" id="up_c_state">
+			  				<option value="0">审核中</option>
+			  				<option value="1">审核通过</option>
+			  				<option value="2">审核未通过</option>
 			  			</select>
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">时间</td>
 			  		<td>
-			  			<input readonly id="up_c_time" name="c_time" style="line-height:22px;font-size:13px"">
+			  			<input readonly id="up_c_time" name="c_time" style="line-height:22px;font-size:13px;background-color:#f1f2f3">
 			  		</td>
 			  	</tr>
 			  </table>
-	        </form>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-	        <button type="button" class="btn btn-primary" onclick="tijiao();">保存</button>
+	        <button type="submit" class="btn btn-primary">保存</button>
 	      </div>
+	        </form>
 	    </div>
 	  </div>
 	</div>
@@ -210,18 +222,19 @@ response.setDateHeader("Expires",0);
 	<nav class="navbar navbar-default" style="margin-top:2%;height:auto">
 		<div class="container-fluid" style="height:auto">
 			<div class="main" style="height:auto">
-				<h2 class="sub-header">顾客信息列表</h2>
+				<h2 class="sub-header">客户信息列表</h2>
 				<div class="table-responsive">
 					<table class="table table-striped" style="font-size:14px;">
 						<thead>
 							<tr>
 								<th>编号</th>
-								<th>顾客姓名</th>
-								<th>顾客电话</th>
+								<th>客户姓名</th>
+								<th>客户性别</th>
+								<th>客户电话</th>
 								<th>店面地址</th>
 								<th>所属区域</th>
-								<th>督导姓名</th>
-								<th>督导电话</th>
+								<th>区域经理姓名</th>
+								<th>区域经理电话</th>
 								<th>当前状态</th>
 								<th>时间</th>
 								<th>操作</th>
@@ -232,26 +245,37 @@ response.setDateHeader("Expires",0);
 								<tr>
 									<td id="l_c_num_${c.c_num}">${c.c_num}</td>
 									<td id="l_c_name_${c.c_num}">${c.c_name}</td>
+									<input type="hidden" id="l_c_sex_${c.c_num}" value="${c.c_sex}"/>
+									<c:if test="${c.c_sex == 0}">
+										<td>先生</td>
+									</c:if>
+									<c:if test="${c.c_sex == 1}">
+										<td>女士</td>
+									</c:if>
 									<td id="l_c_phone_${c.c_num}">${c.c_phone}</td>
 									<td id="l_c_address_${c.c_num}">${c.c_address}</td>
 									<td id="l_c_area_${c.c_num}">${c.c_area}</td>
 									<td id="l_w_name_${c.c_num}">${c.w_name}</td>
 									<td id="l_w_phone_${c.c_num}">${c.w_phone}</td>
+									<input type="hidden" id="l_c_state_${c.c_num}" value="${c.c_state}"/>
 									<c:if test="${c.c_state == 0}">
-										<td id="l_c_state_${c.c_num}" style="color:green">审核中</td>
+										<td style="color:blue">审核中</td>
 									</c:if>
 									<c:if test="${c.c_state == 1}">
-										<td id="l_c_state_${c.c_num}" style="color:red">审核通过</td>
+										<td style="color:green">审核通过</td>
+									</c:if>
+									<c:if test="${c.c_state == 2}">
+										<td style="color:red">审核未通过</td>
 									</c:if>
 									<td id="l_c_time_${c.c_num}">${c.c_time}</td>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<form id="pay_form"
+					<%-- <form id="pay_form"
 						action="<c:url value='List_Pay_Prove_Servlet?method=list&page=1'/>"
 						method="post">
 						<nav margin="0px">
@@ -308,7 +332,7 @@ response.setDateHeader("Expires",0);
 						<input type="hidden" id="select_end_time" name="end_time">
 						<input type="button" class="btn btn-default" onclick="fanye(1)" value="查看" />
 						<!-- <button type="button" class="btn btn-primary" onclick="addFun()" data-toggle="modal" data-target="#add_update_Modal">添加</button> -->
-					</form>
+					</form> --%>
 				</div>
 			</div>
 		</div>

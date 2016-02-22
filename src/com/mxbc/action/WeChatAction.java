@@ -1,5 +1,8 @@
 package com.mxbc.action;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,9 +17,17 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
 	
 	private Customer customer = new Customer();
-	
+	private String message = new String();
 	public String findByNum() {
+		System.out.println(customer.getC_num()+"--------------->>>>>>>>>");
+		String c_name = customer.getC_name();
 		customer = customerDao.findByNumDao(customer.getC_num());
+		if(c_name.equals(customer.getC_name())){
+			message = "详情请拨打400-***-**，进行人工查询。";
+		}else{
+			message = "请输入正确的编号与姓名！如有问题请拨打400-***-**人工服务！";
+			customer = null;
+		}
 		return SUCCESS;
 	}
 	
@@ -25,6 +36,12 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	public String getMessage() {
+		return message;
+	}
+	public void setMessage(String message) {
+		this.message = message;
 	}
 
 	public Customer getModel() {

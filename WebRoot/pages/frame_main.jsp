@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>蜜雪冰城顾客信息管理系统</title>
+    <title>蜜雪冰城</title>
     <link rel="icon" type="image/x-icon" href="<%=request.getContextPath()%>/logo/icon.png" media="screen"/>
 	<link href="<c:url value='/css/bootstrap.min.css'/>" rel="stylesheet">
     <link href="<c:url value='/css/dashboard.css'/>" rel="stylesheet">
@@ -44,7 +44,7 @@
     }
     //退出登录
     function firm(){
-    	location.href="Logout_Servlet";
+    	location.href="loginAction.action";
     }
     //判断当前时间段
     $(function(){
@@ -95,19 +95,18 @@
     </div>
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" style="color:white;" href="#" onclick="javascript:alter_href('Opreate_Notes_Servlet?method=list');">蜜雪冰城顾客信息管理系统</a>
+          <a class="navbar-brand" style="color:white;" href="#" onclick="javascript:alter_href('findAllCusAction.action');">蜜雪冰城店面审核自助查询系统</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" id="hello_name"></a></li>
-            <%-- <input type="hidden" value="${sessionScope.username}" id="admin_name"> --%>
-            <input type="hidden" value="郑斌" id="admin_name">
+            <input type="hidden" value="汪俊奇" id="admin_name">
             <input type="hidden" value="${sessionScope.username_code}" id="admin_code">
             <li><a href="#" data-toggle="modal" data-target="#delete_small_ModalLabel">退出</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
+          <!-- <form class="navbar-form navbar-right">
             <input type="text" class="form-control" placeholder="Search...">
-          </form>
+          </form> -->
         </div>
       </div>
     </nav>
@@ -116,15 +115,15 @@
         <div class="col-sm-3 col-md-2 sidebar">
        	 <ul class="nav nav-sidebar">
           <li class="active"><a href="#">快速操作 <span class="sr-only">(current)</span></a></li>
-            <li id="li_1" class="lihref"><a href="#" onclick="javascript:alter_href('pages/addcustomer.jsp',1);">顾客信息录入</a></li>
+            <li id="li_1" class="lihref"><a href="#" onclick="javascript:alter_href('pages/addcustomer.jsp',1);">客户信息录入</a></li>
           </ul>
 		  <ul class="nav nav-sidebar">
             <li class="active"><a href="#">信息查看 <span class="sr-only">(current)</span></a></li>
-            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">顾客信息列表</a></li>
+            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">客户信息列表</a></li>
           </ul> 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="height:100%;">
-        	<iframe id="iframe" frameborder="no" border="0"  style="height:100%;width:100%;" src="<c:url value='Opreate_Notes_Servlet?method=list'/>"></iframe>
+        	<iframe id="iframe" frameborder="no" border="0"  style="height:100%;width:100%;" src="<c:url value='findAllCusAction.action'/>"></iframe>
         </div>
       </div>
     </div>

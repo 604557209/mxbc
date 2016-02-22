@@ -12,6 +12,7 @@
 		<!-- column定义列的名字 length定义字段长度 unique是否唯一 not-null不能为空-->
 		<property name="c_num"/>
 		<property name="c_name"/>
+		<property name="c_sex"/>
 		<property name="c_phone"/>
 		<property name="c_address"/>
 		<property name="c_area"/>

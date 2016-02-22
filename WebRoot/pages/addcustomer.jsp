@@ -22,7 +22,31 @@
     <script src="<c:url value='/js/html5shiv.min.js'/>"></script>
     <script src="<c:url value='/js/respond.js'/>"></script>
     <script>
-		
+		function check_f(){
+			var ac = true;
+			$(".check_number").each(function(){
+				var input_name = $(this).attr("name");
+				if(isNaN($(this).val())){
+					ac = false;
+					$("#warn_"+input_name).attr("style","color: red;");
+				}else{
+					$("#warn_"+input_name).attr("style","display: none");
+				}
+			});
+			if(!ac){
+				return 0;
+			}
+			$(".check_value").each(function(){
+				if($(this).val() == ''){
+					ac = false;	
+				}
+			});
+			if(ac){
+				$("#customer_form").submit();
+			}else{
+				alert("请将信息填写完整！");
+			}
+		}
 	</script>
   </head>
   <body style="padding:0px;background:#f1f2f3 url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);height:auto">
@@ -37,47 +61,60 @@
 			  	<tr>
 			  		<td width="125">编号</td>
 			  		<td>
-			  			<input name="c_num" style="line-height:22px;font-size:13px"">
+			  			<input class="check_value check_number" id="check_c_num" name="c_num" style="line-height:22px;font-size:13px">
+			  			<span style="color: red; display: none;" id="warn_c_num">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">顾客姓名</td>
+			  		<td width="125">客户姓名</td>
 			  		<td>
-			  			<input name="c_name" style="line-height:22px;font-size:13px"">
+			  			<input class="check_value" name="c_name" style="line-height:22px;font-size:13px"">
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">顾客电话</td>
+			  		<td width="125">客户性别</td>
 			  		<td>
-			  			<input name="c_phone" style="line-height:22px;font-size:13px"">
+			  			<select name="c_sex">
+			  				<option value="0">先生</option>
+			  				<option value="1">女士</option>
+			  			</select>
+			  		</td>
+			  	</tr>
+			  	<tr>
+			  		<td width="125">客户电话</td>
+			  		<td>
+			  			<input class="check_value check_number" id="check_c_phone" name="c_phone" style="line-height:22px;font-size:13px">
+			  			<span style="color: red; display: none;" id="warn_c_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  	<tr>
 			  		<td width="125">店面地址</td>
 			  		<td>
-			  			<input name="c_address" style="line-height:22px;size:120;width:300px;font-size:13px">
+			  			<input class="check_value" name="c_address" style="line-height:22px;size:120;width:300px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr>
 			  		<td width="125">所属区域</td>
 			  		<td>
-			  			<input name="c_area" style="line-height:22px;font-size:13px">
+			  			<input class="check_value" name="c_area" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">区域督导姓名</td>
+			  		<td width="125">区域经理姓名</td>
 			  		<td>
-			  			<input name="w_name" style="line-height:22px;font-size:13px"">
+			  			<input class="check_value" name="w_name" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
-			  		<td width="125">督导电话</td>
+			  		<td width="125">区域经理电话</td>
 			  		<td>
-			  			<input name="w_phone" style="line-height:22px;font-size:13px"">
+			  			<input class="check_value check_number" id="check_w_phone" name="w_phone" style="line-height:22px;font-size:13px">
+			  			<span style="color: red; display: none;" id="warn_w_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  </table>
-			  <input type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#add_update_Modal"/>
+			  <br>
+			  <input type="button" onclick="check_f()" value="录入" class="btn btn-primary"  data-toggle="modal" data-target="#add_update_Modal"/>
 			  <input type="reset" class="btn btn-primary" value="重置">
 			</form>
           </div>
