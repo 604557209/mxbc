@@ -13,7 +13,7 @@
         destroy-method="close">  
         <property name="driverClass" value="com.mysql.jdbc.Driver">  
         </property>  
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/mxbc?useUnicode=true&amp;characterEncoding=UTF-8"></property>  
+        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3307/mxbc?useUnicode=true&amp;characterEncoding=UTF-8"></property>  
         <property name="user" value="root" />  
         <property name="password" value="950906" />  
   
@@ -37,7 +37,8 @@
         <property name="testConnectionOnCheckout" value="false" />  
     </bean> 
    
-    <!-- 配置SessionFactory -->
+   
+    <!-- Hibernate SessionFactory -->
     <bean id="sessionFactory"
         class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>

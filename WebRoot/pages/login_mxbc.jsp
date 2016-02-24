@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>郑州市圃田车站</title>
+    <title>蜜雪冰城</title>
     <link rel="icon" type="image/x-icon" href="http://192.168.43.26:8080/ZZ.PuTian.TrainStation/logo/logo.png" media="screen"/>
 	<link rel="stylesheet" type="text/css" href="<c:url value='/css/bootstrap.min.css'/>">
     <link rel="stylesheet" type="text/css" href="<c:url value='/css/dashboard.css'/>">

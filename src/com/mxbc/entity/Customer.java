@@ -13,6 +13,7 @@ public class Customer {
 	private String w_name;
 	private String w_phone;
 	private int c_state;
+	private String c_fail_cause;
 	private Date c_time;
 	
 	public int getC_id() {
@@ -74,6 +75,12 @@ public class Customer {
 	}
 	public void setC_state(int c_state) {
 		this.c_state = c_state;
+	}
+	public String getC_fail_cause() {
+		return c_fail_cause;
+	}
+	public void setC_fail_cause(String c_fail_cause) {
+		this.c_fail_cause = c_fail_cause;
 	}
 	public Date getC_time() {
 		return c_time;

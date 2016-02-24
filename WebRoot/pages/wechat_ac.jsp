@@ -65,22 +65,47 @@
 					</ul>
 				</section>
 				<section class="section_padding">
+					<h2 class="section_title">店面信息</h2>
+					<ul class="cell_container">
+						<li>
+							<div>店面地址：<span id="wc_c_address">${customer.c_address}</span></div>
+						</li>
+						<li>
+							<div>店面所属区域：<span id="wc_c_area">${customer.c_area}</span></div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
+					<h2 class="section_title">店面区域经理信息</h2>
+					<ul class="cell_container">
+						<li>
+							<div>区域经理姓名：<span id="wc_w_name">${customer.w_name}</span></div>
+						</li>
+						<li>
+							<div>区域经理电话：<span id="wc_w_phone">${customer.w_phone}</span></div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
 					<h2 class="section_title">当前状态</h2>
 					<ul class="cell_container">
 						<li>
 							<div>审核状态：
-								<c:if test="${customer.c_state == 0}">
-									<span id="wc_c_state" style="color:blue">派单中</span>
-								</c:if>
-								<c:if test="${customer.c_state == 1}">
-									<span id="wc_c_state" style="color:blue">审核任务已派发，区域经理${customer.w_name}将为您审核店面</span>
-								</c:if>
-								<c:if test="${customer.c_state == 2}">
-									<span id="wc_c_state" style="color:blue">审核中，请耐心等待</span>
-								</c:if>
-								<c:if test="${customer.c_state == 3}">
-									<span id="wc_c_state" style="color:blue">审核完成，资料回传评定中，请耐心等待</span>
-								</c:if>
+								<span id="wc_c_state" style="color:green">审核通过</span>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
+					<ul class="cell_container">
+						<li>
+							<div>尊敬的${customer.c_name}<c:if test="${customer.c_sex == 0}">先生</c:if><c:if test="${customer.c_sex == 1}">女士</c:if>：
+							<br>您好！<br>
+&nbsp;&nbsp;&nbsp;&nbsp;恭喜您通过蜜雪冰城店面评审预估，愿我们在未来的合作中携手并进！<br>
+&nbsp;&nbsp;&nbsp;&nbsp;请您务必于三个工作日内（即2016年X月X日前）携带本人身份证（退伍军人请携带退伍证）、房屋租赁合同，前往公司签订《特许经营合同》，如超过该通知期限未签订《特许经营合同》，视为自动放弃。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;如有问题请及时联系您的投资顾问：______ 联系方式：____________<br>
+&nbsp;&nbsp;&nbsp;&nbsp;公司地址：河南省郑州市金水区文化路北三环瀚海北金商业中心A座16楼<br>
+&nbsp;&nbsp;&nbsp;&nbsp;感谢您对蜜雪冰城的支持和关注，并衷心地希望未来能与您达成合作，携手并进！
 							</div>
 						</li>
 					</ul>

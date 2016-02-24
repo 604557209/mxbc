@@ -11,7 +11,7 @@ response.setDateHeader("Expires",0);
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>预付款信息列表</title>
+<title>客户信息列表</title>
 <link rel="icon" href="<c:url value='/logo/logo.png'/>">
 <link href="<c:url value='/css/bootstrap.min.css'/>" rel="stylesheet">
 <link href="<c:url value='/css/dashboard.css'/>" rel="stylesheet">
@@ -20,111 +20,35 @@ response.setDateHeader("Expires",0);
 <script src="<c:url value='/js/jquery.min.js'/>"></script>
 <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
 <script type="text/javascript">
-    $(function() {
-   			var svby = $("#select_value_begin_year").val();
-   			var svey = $("#select_value_end_year").val();
-			var page = $("#page_servlet").val();//选中跳转至的页数
-			$("li").each(function(){
-			    $(this).attr("class","");
-			});
-			var n = 4;
-			var end = $("#pages_servlet").val();
-			for(var m = 1;m <= end;m++,n++){
-				//var s = document.getElementById('pages_ul');
-				$("#pages_ul").append("<li id=li_"+m+" class=><a href=# onclick=fanye("+m+");>"+m+"</a></li>");
-			}
-			$("#pages_ul").append("<li>"
-			      +"<a href=# aria-label=Next>"
-			       + "<span aria-hidden=true>&raquo;</span>"
-			     + "</a>"
-			   + "</li>");
-			$("#li_"+page).attr("class","active");
-			//增加票据时，自动生成时间中的年份
-			//获得当前年份
-			var today = new Date();
-	        year1 = today.getFullYear();
-	        year2 = year1 + 1;
-	        year3 = year2 + 1;
-	        year0 = year1 - 1;
-	        $("#sb_y_0").text(year0);
-			$("#sb_y_1").text(year1);
-			$("#sb_y_2").text(year2);
-			$("#sb_y_3").text(year3);
-			$("#se_y_0").text(year0);
-			$("#se_y_1").text(year1);
-			$("#se_y_2").text(year2);
-			$("#se_y_3").text(year3);
-			for(var i = 0;i < 4;i++){
-				if($("#sb_y_"+i).text() == svby){
-					$("#sb_y_"+i).attr("selected",true);
-				} 
-				if($("#se_y_"+i).text() == svey){
-					$("#se_y_"+i).attr("selected",true);
-				}
-			}
-		});
-		function fanye(pages){
-			$("#pay_form").attr("action","List_Pay_Prove_Servlet?method=list&page="+pages);
-			tijiao();
+	function choose_fail(value){
+		if(value == 5){
+			$("#check_select_tr").attr("style","");
+		}else{
+			$("#check_select_tr").attr("style","display:none");
 		}
-		function tijiao(){
-			var change_times = new Array();
-			change_times.push($("#select_begin_month").val());
-			change_times.push($("#select_begin_day").val());
-			change_times.push($("#select_end_month").val());
-			change_times.push($("#select_end_day").val());
-			for(i=0;i<change_times.length;i++){
-				if(change_times[i].length==1){
-					change_times[i] = "0"+change_times[i];
-				}
-			}
-			begin_time = $("#select_begin_year").val()+"-"+change_times[0]+"-"+change_times[1];
-			end_time = $("#select_end_year").val()+"-"+change_times[2]+"-"+change_times[3];
-			$("#select_begin_time").val(begin_time);
-			$("#select_end_time").val(end_time);
-			$("#pay_form").submit();
+	}
+	function update_customer(num,id){
+		$("#up_c_id").val(id);
+		$("#up_c_num").val($("#l_c_num_"+num).text());
+		$("#up_c_name").val($("#l_c_name_"+num).text());
+		$("#up_c_sex").val($("#l_c_sex_"+num).val());
+		$("#up_c_phone").val($("#l_c_phone_"+num).text());
+		$("#up_c_address").val($("#l_c_address_"+num).text());
+		$("#up_c_area").val($("#l_c_area_"+num).text());
+		$("#up_w_name").val($("#l_w_name_"+num).text());
+		$("#up_w_phone").val($("#l_w_phone_"+num).text());
+		$("#up_c_state").val($("#l_c_state_"+num).val());
+		if($("#up_c_state").val() == 5){
+			var c_fail_cause_l = $("#l_c_fail_cause_"+num).val().split(", ");
+			$("#up_c_fail_cause").val(c_fail_cause_l);
 		}
-		function addFun(){
-			var date;
-	        var month;
-	        var year;
-	        var today = new Date();
-	        year = today.getFullYear()+"";
-	        month = today.getMonth() + 1;
-	        month+="";
-	        date = today.getDate()+"";
-       		hour = today.getHours()+"";
-			minute = today.getMinutes()+"";
-			second = today.getSeconds()+"";
-			if(month.length == 1){
-				month = "0"+month;
-			}if(date.length == 1){
-				date = "0"+date;
-			}if(hour.length == 1){
-				hour = "0"+hour;
-			}if(minute.length == 1){
-				minute = "0"+minute;
-			}if(second.length == 1){
-				second = "0"+second;
-			}
-			
-			var ok_time = year+"-"+month+"-"+date+" "+hour+":"+minute+":"+second;
-	        $("#addpay_time").val(ok_time);
+		$("#up_c_time").val($("#l_c_time_"+num).text());
+		if($("#up_c_state").val() == 5){
+			$("#check_select_tr").attr("style","");
+		}else{
+			$("#check_select_tr").attr("style","display:none");
 		}
-		
-		function update_customer(num,id){
-			$("#up_c_id").val(id);
-			$("#up_c_num").val($("#l_c_num_"+num).text());
-			$("#up_c_name").val($("#l_c_name_"+num).text());
-			$("#up_c_sex").val($("#l_c_sex_"+num).val());
-			$("#up_c_phone").val($("#l_c_phone_"+num).text());
-			$("#up_c_address").val($("#l_c_address_"+num).text());
-			$("#up_c_area").val($("#l_c_area_"+num).text());
-			$("#up_w_name").val($("#l_w_name_"+num).text());
-			$("#up_w_phone").val($("#l_w_phone_"+num).text());
-			$("#up_c_state").val($("#l_c_state_"+num).val());
-			$("#up_c_time").val($("#l_c_time_"+num).text());
-		}
+	}
     </script>
 </head>
 <body
@@ -195,11 +119,31 @@ response.setDateHeader("Expires",0);
 			  	<tr line-height="32px">
 			  		<td width="125">信息状态</td>
 			  		<td>
-			  			<select name="c_state" id="up_c_state">
-			  				<option value="0">审核中</option>
-			  				<option value="1">审核通过</option>
-			  				<option value="2">审核未通过</option>
+			  			<select name="c_state" id="up_c_state"  onchange="choose_fail(this.options[this.selectedIndex].value)">
+			  				<option value="0">派单中</option>
+			  				<option value="1">审核任务已派发，区域经理将为您审核店面</option>
+			  				<option value="2">审核中，请耐心等待</option>
+			  				<option value="3">审核完成，资料回传评定中，请耐心等待</option>
+			  				<option value="4">审核通过</option>
+			  				<option value="5">审核未通过</option>
 			  			</select>
+			  		</td>
+			  	</tr>
+			  	<tr  id="check_select_tr" line-height="32px" style="display:none">
+			  		<td width="125">未通过原因（CTRL可多选）</td>
+			  		<td>
+			  			<select id="up_c_fail_cause" multiple="true" name="c_fail_cause" value="0,3">
+							<option id="c_cause_0" value="0">商圈不成熟</option>  
+							<option id="c_cause_1" value="1">店面位置偏，客流量不足</option>
+							<option id="c_cause_2" value="2">房型不符合标准</option> 
+							<option id="c_cause_3" value="3">房屋面积不达标</option>
+							<option id="c_cause_4" value="4">三相电、上下水不达标</option>
+							<option id="c_cause_5" value="5">与现有店面冲突</option>
+							<option id="c_cause_6" value="6">与市政规划冲突</option>
+							<option id="c_cause_7" value="7">与公司经营理念相悖</option>
+							<option id="c_cause_8" value="8">店面租金过高，回本周期长，投资风险大</option>
+							<option id="c_cause_9" value="9">房屋租凭存在风险</option>
+						</select>
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
@@ -259,86 +203,37 @@ response.setDateHeader("Expires",0);
 									<td id="l_w_phone_${c.c_num}">${c.w_phone}</td>
 									<input type="hidden" id="l_c_state_${c.c_num}" value="${c.c_state}"/>
 									<c:if test="${c.c_state == 0}">
-										<td style="color:blue">审核中</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">派单中</td>
 									</c:if>
 									<c:if test="${c.c_state == 1}">
-										<td style="color:green">审核通过</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核任务已派发，区域经理${c.w_name}将审核店面</td>
 									</c:if>
 									<c:if test="${c.c_state == 2}">
-										<td style="color:red">审核未通过</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核中，请耐心等待</td>
+									</c:if>
+									<c:if test="${c.c_state == 3}">
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核完成，资料回传评定中，请耐心等待</td>
+									</c:if>
+									<c:if test="${c.c_state == 4}">
+										<td id="td_c_state_${c.c_state}" style="color:green">审核通过</td>
+									</c:if>
+									<c:if test="${c.c_state == 5}">
+										<td id="td_c_state_${c.c_state}"style="color:red">审核未通过</td>
 									</c:if>
 									<td id="l_c_time_${c.c_num}">${c.c_time}</td>
+									<input type="hidden" id="l_c_fail_cause_${c.c_num}" value="${c.c_fail_cause}"/>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										<!-- <button type="button" class="btn btn-primary btn-xs" onclick="" data-toggle="modal" data-target="#add_update_Modal">删除</button> -->
 									</td>
 								</tr>
 							</c:forEach>
 						</tbody>
 					</table>
-					<%-- <form id="pay_form"
-						action="<c:url value='List_Pay_Prove_Servlet?method=list&page=1'/>"
-						method="post">
-						<nav margin="0px">
-							<ul class="pagination" id="pages_ul">
-								<li><a href="#" aria-label="Previous"> <span
-										aria-hidden="true">&laquo;</span>
-								</a></li>
-							</ul>
-						</nav>
-
-						<select id="select_begin_year" class="form-control list_begin_year" style="width:8%;display:inline" name="begin_year">
-							<option id="sb_y_0"></option>
-							<option id="sb_y_1"></option>
-							<option id="sb_y_2"></option>
-							<option id="sb_y_3"></option>
-						</select> 年 
-						<select id="select_begin_month"
-							class="form-control list_begin_month"
-							style="width:6%;display:inline" name="begin_month">
-							<c:forEach var="month" begin="1" end="12">
-								<option value="${month}"
-									<c:if test="${month == begin_month_select}">selected="selected"</c:if>>${month}</option>
-							</c:forEach>
-						</select> 月 <select id="select_begin_day"
-							class="form-control list_bank_time"
-							style="width:6%;display:inline" name="begin_day">
-							<c:forEach var="day" begin="1" end="31">
-								<option value="${day}"
-									<c:if test="${day == begin_day_select}">selected="selected"</c:if>>${day}</option>
-							</c:forEach>
-						</select> 日- 
-						<select id="select_end_year" class="form-control list_bank_time" style="width:8%;display:inline" name="end_year">
-							<option id="se_y_0"></option>
-							<option id="se_y_1"></option>
-							<option id="se_y_2"></option>
-							<option id="se_y_3"></option>
-						</select> 年 <select id="select_end_month"
-							class="form-control list_bank_time"
-							style="width:6%;display:inline" name="end_month">
-							<c:forEach var="month" begin="1" end="12">
-								<option value="${month}"
-									<c:if test="${end_month_select == month}">selected="selected"</c:if>>${month}</option>
-							</c:forEach>
-						</select> 月 <select id="select_end_day" class="form-control list_bank_time"
-							style="width:6%;display:inline" name="end_day">
-							<c:forEach var="day" begin="1" end="31">
-								<option value="${day}"
-									<c:if test="${end_day_select == day}">selected="selected"</c:if>>${day}</option>
-							</c:forEach>
-						</select> 日 
-						<input type="hidden" id="select_value_begin_year" value="${begin_year_select}">
-						<input type="hidden" id="select_value_end_year" value="${end_year_select}">
-						<input type="hidden" id="select_begin_time" name="begin_time">
-						<input type="hidden" id="select_end_time" name="end_time">
-						<input type="button" class="btn btn-default" onclick="fanye(1)" value="查看" />
-						<!-- <button type="button" class="btn btn-primary" onclick="addFun()" data-toggle="modal" data-target="#add_update_Modal">添加</button> -->
-					</form> --%>
 				</div>
 			</div>
 		</div>
 		</div>
 	</nav>
-	<input type="hidden" id="pages_servlet" value="${pages}">
-	<input type="hidden" id="page_servlet" value="${pages_num}">
 </body>
 </html>

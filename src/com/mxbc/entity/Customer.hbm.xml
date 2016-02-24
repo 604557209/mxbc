@@ -19,6 +19,7 @@
 		<property name="w_name"/>
 		<property name="w_phone"/>
 		<property name="c_state"/>
+		<property name="c_fail_cause"/>
 		<property name="c_time"/>
 	</class>
 </hibernate-mapping>

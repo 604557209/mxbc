@@ -24,11 +24,22 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 		customer = customerDao.findByNumDao(customer.getC_num());
 		if(c_name.equals(customer.getC_name())){
 			message = "详情请拨打400-***-**，进行人工查询。";
-		}else{
+			//审核通过
+			if(customer.getC_state() == 4){
+				return "pass";
+			}
+			//审核未通过
+			else if(customer.getC_state() == 5){
+				return "fail";
+			}
+		}
+		//编号与姓名不匹配
+		else{
 			message = "请输入正确的编号与姓名！如有问题请拨打400-***-**人工服务！";
 			customer = null;
+			return "error";
 		}
-		return SUCCESS;
+		return "normal";
 	}
 	
 	public Customer getCustomer() {

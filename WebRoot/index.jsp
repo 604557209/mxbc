@@ -15,12 +15,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<script type="text/javascript">
+		function fun(){
+			var select = document.getElementById("test");
+			var str = [];
+			for(i=0;i<select.length;i++){
+				if(select.options[i].selected){
+					str.push(select[i].value);
+				}
+			}
+			alert(str);
+		}
+	</script>
   </head>
   
   <body>
-    This is my JSP page. <br>
+	<select id="test" multiple="true">
+		<option value="option-A">option-A</option>  
+		<option value="option-B">option-B</option>
+		<option value="option-C">option-C</option> 
+		<option value="option-D">option-D</option>
+	</select>
+	<input type="button" value="确定" onclick="fun()" />
   </body>
 </html>

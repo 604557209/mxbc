@@ -16,6 +16,12 @@
 <link href="<c:url value='/css/mxbc-wechat.css'/>" rel="stylesheet">
 <script src="<c:url value='/js/jquery.min.js'/>"></script>
 <script type="text/javascript">
+	$(function (){
+		var cases = $("#wc_c_fail_cause").val().split(", ");
+		for(var i = 0;i <= cases.length;i++){
+			$("#case_"+cases[i]).attr("style","padding-left: 3%;width:100%;");
+		} 	
+	});
 	function checkf(){
 		if($("#f_c_num").val() == '' || $("#f_c_name").val() == ''){
 			alert("请输入您的编号与姓名");
@@ -65,22 +71,55 @@
 					</ul>
 				</section>
 				<section class="section_padding">
+					<h2 class="section_title">店面信息</h2>
+					<ul class="cell_container">
+						<li>
+							<div>店面地址：<span id="wc_c_address">${customer.c_address}</span></div>
+						</li>
+						<li>
+							<div>店面所属区域：<span id="wc_c_area">${customer.c_area}</span></div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
+					<h2 class="section_title">店面区域经理信息</h2>
+					<ul class="cell_container">
+						<li>
+							<div>区域经理姓名：<span id="wc_w_name">${customer.w_name}</span></div>
+						</li>
+						<li>
+							<div>区域经理电话：<span id="wc_w_phone">${customer.w_phone}</span></div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
 					<h2 class="section_title">当前状态</h2>
 					<ul class="cell_container">
 						<li>
 							<div>审核状态：
-								<c:if test="${customer.c_state == 0}">
-									<span id="wc_c_state" style="color:blue">派单中</span>
-								</c:if>
-								<c:if test="${customer.c_state == 1}">
-									<span id="wc_c_state" style="color:blue">审核任务已派发，区域经理${customer.w_name}将为您审核店面</span>
-								</c:if>
-								<c:if test="${customer.c_state == 2}">
-									<span id="wc_c_state" style="color:blue">审核中，请耐心等待</span>
-								</c:if>
-								<c:if test="${customer.c_state == 3}">
-									<span id="wc_c_state" style="color:blue">审核完成，资料回传评定中，请耐心等待</span>
-								</c:if>
+								<span id="wc_c_state" style="color:red">审核未通过</span>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="section_padding">
+					<ul class="cell_container">
+						<li>
+							<input type="hidden" value="${customer.c_fail_cause}" id="wc_c_fail_cause"/>
+							<div>尊敬的${customer.c_name}<c:if test="${customer.c_sex == 0}">先生</c:if><c:if test="${customer.c_sex == 1}">女士</c:if>：
+							<br>您好！<br>
+							&nbsp;&nbsp;&nbsp;&nbsp;非常遗憾您申请的蜜雪冰城店面评审预估未能通过，原因如下：
+								<label style="padding-left: 3%;width:100%;display:none" id="case_0">商圈不成熟</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_1">店面位置偏，客流量不足</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_2">房型不符合标准</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_3">房屋面积不达标</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_4">三相电、上下水不达标</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_5">与现有店面冲突</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_6">与市政规划冲突</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_7">与公司经营理念相悖</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_8">店面租金过高，回本周期长，投资风险大</label>
+								<label style="padding-left: 3%;width:100%;display:none" id="case_9">房屋租凭存在风险</label>
+							&nbsp;&nbsp;&nbsp;&nbsp;感谢您对蜜雪冰城的支持和关注，并衷心地希望未来能与您达成合作，携手并进！
 							</div>
 						</li>
 					</ul>
