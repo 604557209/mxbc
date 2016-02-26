@@ -15,8 +15,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	
 	private static final long serialVersionUID = -1056099330002321491L;
 	//private EmployeeDao employeeDao = EmployeeDaoImpl.getInstance();
-	BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext-*.xml");
-	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+//	BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext-*.xml");
+//	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+	
+	private CustomerDao customerDao;
 	
 	private List<Customer> list;
 	private Customer customer = new Customer();
@@ -75,5 +77,13 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	
 	public Customer getModel() {
 		return customer;
+	}
+
+	public CustomerDao getCustomerDao() {
+		return customerDao;
+	}
+
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
 	}
 }

@@ -14,8 +14,9 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class WeChatAction extends ActionSupport implements ModelDriven<Customer>{
 	private static final long serialVersionUID = 5814015623149869328L;
-	BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext-*.xml");
-	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+//	BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext-*.xml");
+//	CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+	private CustomerDao customerDao;
 	
 	private Customer customer = new Customer();
 	private String message = new String();
@@ -70,6 +71,12 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 
 	public Customer getModel() {
 		return customer;
+	}
+	public CustomerDao getCustomerDao() {
+		return customerDao;
+	}
+	public void setCustomerDao(CustomerDao customerDao) {
+		this.customerDao = customerDao;
 	}
 	
 }

@@ -88,7 +88,7 @@
   </div>
 </div>
   <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-header" style="width:10%;">
+    <div class="navbar-header" style="width:10%;height:10%">
       <a class="navbar-brand" style="width:100%;" href="#">
         <img alt="Brand" style="height:100%;width:100%;" src="<c:url value='/logo/logo.png'/>">
       </a>

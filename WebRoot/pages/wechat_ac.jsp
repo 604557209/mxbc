@@ -115,7 +115,6 @@
 &nbsp;&nbsp;&nbsp;&nbsp;请您务必于三个工作日内（即<span id="time_y"></span>年<span id="time_m"></span>月<span id="time_d"></span>日前）携带本人身份证（退伍军人请携带退伍证）、房屋租赁合同，前往公司签订《特许经营合同》，如超过该通知期限未签订《特许经营合同》，视为自动放弃。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;如有问题请及时联系您的投资顾问：${customer.t_name} 联系方式：${customer.t_phone}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;公司地址：河南省郑州市金水区文化路北三环瀚海北金商业中心A座16楼<br>
-&nbsp;&nbsp;&nbsp;&nbsp;感谢您对蜜雪冰城的支持和关注，并衷心地希望未来能与您达成合作，携手并进！
 							</div>
 						</li>
 					</ul>

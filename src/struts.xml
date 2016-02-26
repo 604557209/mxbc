@@ -5,33 +5,35 @@
 
 <struts>
 	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.objectFactory" value="spring"/>
+	
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="addCusAction" class="com.mxbc.action.CustomerAction"
+		<action name="addCusAction" class="customerAction"
 			method="add">
 			<result name="success" type="redirect">/findAllCusAction</result>
 		</action>
 
-		<action name="deleteCusAction" class="com.mxbc.action.CustomerAction"
+		<action name="deleteCusAction" class="customerAction"
 			method="delete">
 			<result name="success" type="redirect">/findAllCusAction</result>
 		</action>
 
-		<action name="toUpdateCusAction" class="com.mxbc.action.CustomerAction"
+		<action name="toUpdateCusAction" class="customerAction"
 			method="toUpdate">
 			<result name="success">/edit_customer.jsp</result>
 		</action>
 
-		<action name="updateCusAction" class="com.mxbc.action.CustomerAction"
+		<action name="updateCusAction" class="customerAction"
 			method="update">
 			<result name="success" type="redirect">/findAllCusAction</result>
 		</action>
 
-		<action name="findAllCusAction" class="com.mxbc.action.CustomerAction"
+		<action name="findAllCusAction" class="customerAction"
 			method="findAll">
 			<result name="success">/pages/list_customer.jsp</result>
 		</action>
 
-		<action name="findByNameCusEmpAction" class="com.mxbc.action.CustomerAction"
+		<action name="findByNameCusEmpAction" class="customerAction"
 			method="findByNum">
 			<result name="success">/list_customer.jsp</result>
 		</action>
@@ -42,7 +44,7 @@
 			<result name="error">/pages/login_mxbc.jsp</result>
 		</action>
 		
-		<action name="wechatFindByNum" class="com.mxbc.action.WeChatAction"
+		<action name="wechatFindByNum" class="weChatAction"
 			method="findByNum">
 			<result name="normal">/pages/wechat.jsp</result>
 			<result name="error" type="redirect">/pages/wechat.jsp</result>
