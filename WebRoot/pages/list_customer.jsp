@@ -27,7 +27,7 @@ response.setDateHeader("Expires",0);
 			$("#check_select_tr").attr("style","display:none");
 		}
 	}
-	function update_customer(num,id){
+	function update_customer(num,id,t_name,t_phone){
 		$("#up_c_id").val(id);
 		$("#up_c_num").val($("#l_c_num_"+num).text());
 		$("#up_c_name").val($("#l_c_name_"+num).text());
@@ -47,6 +47,14 @@ response.setDateHeader("Expires",0);
 			$("#check_select_tr").attr("style","");
 		}else{
 			$("#check_select_tr").attr("style","display:none");
+		}
+		$("#up_t_name").val(t_name);
+		$("#up_t_phone").val(t_phone);
+	}
+	function deleteCus(id) {
+		if (confirm("删除确认")) {
+			$("#del_c_id").val(id);
+			deleteCustomerForm.submit();
 		}
 	}
     </script>
@@ -105,15 +113,27 @@ response.setDateHeader("Expires",0);
 			  		</td>
 			  	</tr>
 			  	<tr>
-			  		<td width="125">区域督导姓名</td>
+			  		<td width="125">区域经理姓名</td>
 			  		<td>
 			  			<input id="up_w_name" name="w_name" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
-			  		<td width="125">督导电话</td>
+			  		<td width="125">区域经理电话</td>
 			  		<td>
 			  			<input id="up_w_phone" name="w_phone" style="line-height:22px;font-size:13px">
+			  		</td>
+			  	</tr>
+			  	<tr line-height="32px">
+			  		<td width="125">投资顾问姓名</td>
+			  		<td>
+			  			<input id="up_t_name" name="t_name" style="line-height:22px;font-size:13px">
+			  		</td>
+			  	</tr>
+			  	<tr line-height="32px">
+			  		<td width="125">投资顾问电话</td>
+			  		<td>
+			  			<input id="up_t_phone" name="t_phone" style="line-height:22px;font-size:13px">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
@@ -142,12 +162,12 @@ response.setDateHeader("Expires",0);
 							<option id="c_cause_6" value="6">与市政规划冲突</option>
 							<option id="c_cause_7" value="7">与公司经营理念相悖</option>
 							<option id="c_cause_8" value="8">店面租金过高，回本周期长，投资风险大</option>
-							<option id="c_cause_9" value="9">房屋租凭存在风险</option>
+							<option id="c_cause_9" value="9">房屋租赁存在风险</option>
 						</select>
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
-			  		<td width="125">时间</td>
+			  		<td width="125">更新时间</td>
 			  		<td>
 			  			<input readonly id="up_c_time" name="c_time" style="line-height:22px;font-size:13px;background-color:#f1f2f3">
 			  		</td>
@@ -180,7 +200,7 @@ response.setDateHeader("Expires",0);
 								<th>区域经理姓名</th>
 								<th>区域经理电话</th>
 								<th>当前状态</th>
-								<th>时间</th>
+								<th>更新时间</th>
 								<th>操作</th>
 							</tr>
 						</thead>
@@ -223,8 +243,8 @@ response.setDateHeader("Expires",0);
 									<td id="l_c_time_${c.c_num}">${c.c_time}</td>
 									<input type="hidden" id="l_c_fail_cause_${c.c_num}" value="${c.c_fail_cause}"/>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
-										<!-- <button type="button" class="btn btn-primary btn-xs" onclick="" data-toggle="modal" data-target="#add_update_Modal">删除</button> -->
+										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id},'${c.t_name}',${c.t_phone})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-danger btn-xs" onclick="deleteCus(${c.c_id})">删除</button>
 									</td>
 								</tr>
 							</c:forEach>
@@ -235,5 +255,8 @@ response.setDateHeader("Expires",0);
 		</div>
 		</div>
 	</nav>
+	<form name="deleteCustomerForm" method="post" action="deleteCusAction.action">
+		<input id="del_c_id" type="hidden" name="c_id"/>
+	</form>
 </body>
 </html>

@@ -34,9 +34,9 @@
 		}
 	}
 </script>
-<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);">
+<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);" style="min-width:150px;max-width:480px;margin:0 auto;">
 	<form id="f_form" action="wechatFindByNum.action" method="post">
-	<header>
+	<header style="width: 480px">
 		<nav>
 			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
 		</nav>
@@ -50,7 +50,6 @@
 
 	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 480px; height: 616px; top: 98px;">
 		<div id="content" class="content android_content_fixed" style="display: block;">
-			<label style="color: red;text-align: center;width: 100%">${message}</label>
 			<div id="scroller" class="scroller">
 				<section class="section_padding">
 					<ul class="cell_container">

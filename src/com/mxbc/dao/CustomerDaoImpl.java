@@ -7,18 +7,19 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.mxbc.entity.Customer;
 
+
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
 
 	public void addDao(Customer customer) {
 		super.getHibernateTemplate().save(customer);
 	}
 
-	public void delDao(int id) {
-		getHibernateTemplate().delete(getHibernateTemplate().get(Customer.class, id));
+	public void delDao(int c_num) {
+		super.getHibernateTemplate().delete(getHibernateTemplate().get(Customer.class, c_num));
 	}
 
-	public Customer toUpdateDao(int c_num) {
-		return (Customer)getHibernateTemplate().get(Customer.class, c_num);
+	public Customer toUpdateDao(int c_id) {
+		return (Customer)getHibernateTemplate().get(Customer.class, c_id);
 	}
 
 	public void updateDao(Customer customer) {

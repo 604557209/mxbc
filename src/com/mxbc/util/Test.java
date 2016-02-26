@@ -19,8 +19,7 @@ public class Test {
 		
 //		BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext*.xml");
 //		CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
-//		Customer c = customerDao.findByNumDao(123);
-//		System.out.println(c.getC_name());
+//		customerDao.delDao(2016006);
 		
 	}
 }

@@ -112,6 +112,19 @@
 			  			<span style="color: red; display: none;" id="warn_w_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
+			  	<tr line-height="32px">
+			  		<td width="125">投资顾问姓名</td>
+			  		<td>
+			  			<input class="check_value" name="t_name" style="line-height:22px;font-size:13px">
+			  		</td>
+			  	</tr>
+			  	<tr line-height="32px">
+			  		<td width="125">投资顾问电话</td>
+			  		<td>
+			  			<input class="check_value check_number" id="check_t_phone" name="t_phone" style="line-height:22px;font-size:13px">
+			  			<span style="color: red; display: none;" id="warn_t_phone">仅能由数字组成</span>
+			  		</td>
+			  	</tr>
 			  </table>
 			  <br>
 			  <input type="button" onclick="check_f()" value="录入" class="btn btn-primary"  data-toggle="modal" data-target="#add_update_Modal"/>

@@ -15,6 +15,8 @@ public class Customer {
 	private int c_state;
 	private String c_fail_cause;
 	private Date c_time;
+	private String t_name;
+	private String t_phone;
 	
 	public int getC_id() {
 		return c_id;
@@ -87,6 +89,18 @@ public class Customer {
 	}
 	public void setC_time(Date c_time) {
 		this.c_time = c_time;
+	}
+	public String getT_name() {
+		return t_name;
+	}
+	public void setT_name(String t_name) {
+		this.t_name = t_name;
+	}
+	public String getT_phone() {
+		return t_phone;
+	}
+	public void setT_phone(String t_phone) {
+		this.t_phone = t_phone;
 	}
 	
 }

@@ -33,7 +33,6 @@
 	<nav class="navbar navbar-default navbar-fixed-bottom">
 		<div></div>
 		<div class="text-center" style="text-align:center;height:40px;line-height:40px;top:50%;">
-			<p class="text-center">Copyright ©2016 中原工学院 All Rights Reserved. Created by 软件学院</p>
 		</div>
 	</nav>
   </body>

@@ -21,5 +21,7 @@
 		<property name="c_state"/>
 		<property name="c_fail_cause"/>
 		<property name="c_time"/>
+		<property name="t_name"/>
+		<property name="t_phone"/>
 	</class>
 </hibernate-mapping>

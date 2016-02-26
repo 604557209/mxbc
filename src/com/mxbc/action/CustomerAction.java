@@ -32,7 +32,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	}
 	
 	public String delete(){
-		customerDao.delDao(customer.getC_num());
+		customerDao.delDao(customer.getC_id());
 		return SUCCESS;
 	}
 	
@@ -42,6 +42,9 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	}
 	
 	public String update(){
+		//更新修改时间
+		java.util.Date date = new java.util.Date();
+		customer.setC_time(date);
 		customerDao.updateDao(customer);
 		return SUCCESS;
 	}

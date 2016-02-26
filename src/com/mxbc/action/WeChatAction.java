@@ -1,7 +1,8 @@
 package com.mxbc.action;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,14 +19,26 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	
 	private Customer customer = new Customer();
 	private String message = new String();
+	private static Date addInteger(Date date,int amount){
+		Date myDate = null;
+		if(date != null){
+			Calendar c = Calendar.getInstance();
+			c.setTime(date);
+			c.add(Calendar.DATE, amount);
+			myDate = c.getTime();
+		}
+		return myDate;
+	}
 	public String findByNum() {
 		System.out.println(customer.getC_num()+"--------------->>>>>>>>>");
 		String c_name = customer.getC_name();
 		customer = customerDao.findByNumDao(customer.getC_num());
 		if(c_name.equals(customer.getC_name())){
-			message = "详情请拨打400-***-**，进行人工查询。";
+//			message = "详情请拨打400-***-**，进行人工查询。";
 			//审核通过
 			if(customer.getC_state() == 4){
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				message = sdf.format(addInteger(customer.getC_time(),3));
 				return "pass";
 			}
 			//审核未通过
@@ -35,7 +48,7 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 		}
 		//编号与姓名不匹配
 		else{
-			message = "请输入正确的编号与姓名！如有问题请拨打400-***-**人工服务！";
+			message = "请输入正确的编号与姓名！";
 			customer = null;
 			return "error";
 		}

@@ -28,9 +28,9 @@
 		}
 	}
 </script>
-<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);">
+<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);" style="min-width:150px;max-width:480px;margin:0 auto;">
 	<form id="f_form" action="wechatFindByNum.action" method="post">
-	<header>
+	<header style="width: 480px">
 		<nav>
 			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
 		</nav>

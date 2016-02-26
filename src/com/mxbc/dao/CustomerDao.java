@@ -8,9 +8,9 @@ import com.mxbc.entity.Customer;
 public interface CustomerDao {
 	public void addDao(Customer customer);
 	
-	public void delDao(int id);
+	public void delDao(int c_num);
 	
-	public Customer toUpdateDao(int id);
+	public Customer toUpdateDao(int c_id);
 	
 	public void updateDao(Customer customer);
 	

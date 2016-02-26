@@ -27,10 +27,20 @@
 			}
 		}
 	}
+	$(function(){
+		var time_list = $("#wc_c_time").val().split(" ");
+		var times = time_list[0].split("-");
+		var year = times[0];
+		var month = times[1];
+		var date = times[2];
+		$("#time_y").text(year);
+		$("#time_m").text(month);
+		$("#time_d").text(date);
+	});
 </script>
-<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);">
+<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);" style="min-width:150px;max-width:480px;margin:0 auto;">
 	<form id="f_form" action="wechatFindByNum.action" method="post">
-	<header>
+	<header style="width: 480px">
 		<nav>
 			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
 		</nav>
@@ -44,7 +54,7 @@
 
 	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 480px; height: 616px; top: 98px;">
 		<div id="content" class="content android_content_fixed" style="display: block;">
-			<label style="color: red;text-align: center;width: 100%">${message}</label>
+			<input type="hidden" id="wc_c_time" value="${message}"
 			<div id="scroller" class="scroller">
 				<section class="section_padding">
 					<ul class="cell_container">
@@ -102,8 +112,8 @@
 							<div>尊敬的${customer.c_name}<c:if test="${customer.c_sex == 0}">先生</c:if><c:if test="${customer.c_sex == 1}">女士</c:if>：
 							<br>您好！<br>
 &nbsp;&nbsp;&nbsp;&nbsp;恭喜您通过蜜雪冰城店面评审预估，愿我们在未来的合作中携手并进！<br>
-&nbsp;&nbsp;&nbsp;&nbsp;请您务必于三个工作日内（即2016年X月X日前）携带本人身份证（退伍军人请携带退伍证）、房屋租赁合同，前往公司签订《特许经营合同》，如超过该通知期限未签订《特许经营合同》，视为自动放弃。<br>
-&nbsp;&nbsp;&nbsp;&nbsp;如有问题请及时联系您的投资顾问：______ 联系方式：____________<br>
+&nbsp;&nbsp;&nbsp;&nbsp;请您务必于三个工作日内（即<span id="time_y"></span>年<span id="time_m"></span>月<span id="time_d"></span>日前）携带本人身份证（退伍军人请携带退伍证）、房屋租赁合同，前往公司签订《特许经营合同》，如超过该通知期限未签订《特许经营合同》，视为自动放弃。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;如有问题请及时联系您的投资顾问：${customer.t_name} 联系方式：${customer.t_phone}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;公司地址：河南省郑州市金水区文化路北三环瀚海北金商业中心A座16楼<br>
 &nbsp;&nbsp;&nbsp;&nbsp;感谢您对蜜雪冰城的支持和关注，并衷心地希望未来能与您达成合作，携手并进！
 							</div>
