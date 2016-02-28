@@ -100,7 +100,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#" id="hello_name"></a></li>
-            <input type="hidden" value="管理员" id="admin_name">
+            <input type="hidden" value="超级管理员" id="admin_name">
             <input type="hidden" value="${sessionScope.username_code}" id="admin_code">
             <li><a href="#" data-toggle="modal" data-target="#delete_small_ModalLabel">退出</a></li>
           </ul>
@@ -116,11 +116,15 @@
        	 <ul class="nav nav-sidebar">
           <li class="active"><a href="#">快速操作 <span class="sr-only">(current)</span></a></li>
             <li id="li_1" class="lihref"><a href="#" onclick="javascript:alter_href('pages/addcustomer.jsp',1);">客户信息录入</a></li>
-          </ul>
-		  <ul class="nav nav-sidebar">
+         </ul>
+		 <ul class="nav nav-sidebar">
             <li class="active"><a href="#">信息查看 <span class="sr-only">(current)</span></a></li>
             <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">客户信息列表</a></li>
-          </ul> 
+         </ul>
+         <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">管理员 <span class="sr-only">(current)</span></a></li>
+            <li id="li_5" class="lihref"><a href="#" onclick="javascript:alter_href('findAllAdminAction.action',5);">系统操作人员管理</a></li>
+         </ul> 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="height:100%;">
         	<iframe id="iframe" frameborder="no" border="0"  style="height:100%;width:100%;" src="<c:url value='findAllCusAction.action'/>"></iframe>

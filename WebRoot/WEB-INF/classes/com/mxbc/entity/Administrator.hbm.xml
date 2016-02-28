@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.mxbc.entity.Administrator" table="administrator">
+		<id name="a_id">
+			<!-- native主键自增长 数据库生成-->
+			<!-- uuid产生唯一值，字符串类型 -->
+			<generator class="native"/>
+		</id>
+		<!-- column定义列的名字 length定义字段长度 unique是否唯一 not-null不能为空-->
+		<property name="a_username"/>
+		<property name="a_password"/>
+		<property name="a_tag"/>
+	</class>
+</hibernate-mapping>

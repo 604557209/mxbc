@@ -8,6 +8,7 @@
 	<constant name="struts.objectFactory" value="spring"/>
 	
 	<package name="default" namespace="/" extends="struts-default">
+		<!-- 客户信息 -->
 		<action name="addCusAction" class="customerAction"
 			method="add">
 			<result name="success" type="redirect">/findAllCusAction</result>
@@ -37,19 +38,50 @@
 			method="findByNum">
 			<result name="success">/list_customer.jsp</result>
 		</action>
-		
+		<!-- 后台登录 -->
 		<action name="loginAction" class="com.mxbc.action.LoginAction"
 			method="login">
-			<result name="success">/pages/frame_main.jsp</result>
+			<result name="success_admin">/pages/frame_main_admin.jsp</result>
+			<result name="success_general">/pages/frame_main.jsp</result>
 			<result name="error">/pages/login_mxbc.jsp</result>
 		</action>
-		
+		<!-- 微信前台 -->
 		<action name="wechatFindByNum" class="weChatAction"
 			method="findByNum">
 			<result name="normal">/pages/wechat.jsp</result>
 			<result name="error" type="redirect">/pages/wechat.jsp</result>
 			<result name="pass">/pages/wechat_ac.jsp</result>
 			<result name="fail">/pages/wechat_fail.jsp</result>
+		</action>
+		<!-- 管理员信息 -->
+		<action name="addAdminAction" class="administratorAction"
+			method="add">
+			<result name="success" type="redirect">/findAllAdminAction</result>
+		</action>
+
+		<action name="deleteAdminAction" class="administratorAction"
+			method="delete">
+			<result name="success" type="redirect">/findAllAdminAction</result>
+		</action>
+
+		<action name="toUpdateAdminAction" class="administratorAction"
+			method="toUpdate">
+			<result name="success">/pages/list_administrator.jsp</result>
+		</action>
+
+		<action name="updateAdminAction" class="administratorAction"
+			method="update">
+			<result name="success" type="redirect">/findAllAdminAction</result>
+		</action>
+
+		<action name="findAllAdminAction" class="administratorAction"
+			method="findAll">
+			<result name="success">/pages/list_administrator.jsp</result>
+		</action>
+
+		<action name="findByNameAdminEmpAction" class="administratorAction"
+			method="findByNum">
+			<result name="success">/pages/list_administrator.jsp</result>
 		</action>
 		
 	</package>

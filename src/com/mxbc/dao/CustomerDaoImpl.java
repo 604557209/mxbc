@@ -2,7 +2,6 @@ package com.mxbc.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.mxbc.entity.Customer;
@@ -26,8 +25,9 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 		super.getHibernateTemplate().update(customer);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Customer> findAllDao() {
-		return super.getHibernateTemplate().find("from Customer");
+		return super.getHibernateTemplate().find("from Customer customer order by customer.c_id desc");
 	}
 
 	public Customer findByNumDao(int c_num) {

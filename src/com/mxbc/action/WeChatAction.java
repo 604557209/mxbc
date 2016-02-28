@@ -4,8 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.mxbc.dao.CustomerDao;
 import com.mxbc.entity.Customer;

@@ -12,5 +12,10 @@
 		<!-- sessionFactory传给dao中的HibernateDaoSupport -->
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	
+	<bean id="administratorDao" class="com.mxbc.dao.AdministratorDaoImpl">
+		<!-- sessionFactory传给dao中的HibernateDaoSupport -->
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 
 </beans>

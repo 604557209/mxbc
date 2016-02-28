@@ -31,5 +31,6 @@
 		<property name="hibernate.c3p0.validate">true</property>
 		
 		<mapping resource="com/mxbc/entity/Customer.hbm.xml"/>
+		<mapping resource="com/mxbc/entity/Administrator.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

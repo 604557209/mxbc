@@ -15,5 +15,13 @@
 	<bean id="weChatAction" class="com.mxbc.action.WeChatAction">
 		<property name="customerDao" ref="customerDao"/>
 	</bean>
+	
+	<bean id="administratorAction" class="com.mxbc.action.AdministratorAction">
+		<property name="administratorDao" ref="administratorDao"/>
+	</bean>
+	
+	<bean id="loginAction" class="com.mxbc.action.LoginAction">
+		<property name="administratorDao" ref="administratorDao"/>
+	</bean>
 
 </beans>

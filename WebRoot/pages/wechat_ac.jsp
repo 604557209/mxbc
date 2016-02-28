@@ -38,9 +38,9 @@
 		$("#time_d").text(date);
 	});
 </script>
-<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);" style="min-width:150px;max-width:480px;margin:0 auto;">
+<body style="background: url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);" style="width:100%;margin:0 auto;">
 	<form id="f_form" action="wechatFindByNum.action" method="post">
-	<header style="width: 480px">
+	<header style="width: 100%">
 		<nav>
 			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
 		</nav>
@@ -52,7 +52,7 @@
 	</header>
 	</form>
 
-	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 480px; height: 616px; top: 98px;">
+	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 100%; height: 616px; top: 98px;">
 		<div id="content" class="content android_content_fixed" style="display: block;">
 			<input type="hidden" id="wc_c_time" value="${message}"
 			<div id="scroller" class="scroller">
