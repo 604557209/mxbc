@@ -87,6 +87,29 @@
     </div>
   </div>
 </div>
+
+  <!-- 帮助 -->
+   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" id="help_small_ModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    	<div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="help_ModalLabel">使用帮助</h4>
+	    </div>
+		<div class="modal-body">
+	        <label>
+	        	招商部管理员为超级管理员，负责信息的录入，拥有系统所有权限。<br><br>
+	        	市场部五名管理员为普通管理员，负责更新客户审核信息状态，不能录入客户信息。<br><br>
+	        	市场部五名管理员的系统登录名与登录密码，由超级管理员即招商部管理员管理。
+	        </label>
+	    </div>
+        <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+	   	</div>
+    </div>
+  </div>
+</div>
+
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-header" style="width:10%;height:10%">
       <a class="navbar-brand" style="width:100%;" href="#">
@@ -102,11 +125,9 @@
             <li><a href="#" id="hello_name"></a></li>
             <input type="hidden" value="超级管理员" id="admin_name">
             <input type="hidden" value="${sessionScope.username_code}" id="admin_code">
+            <li><a href="#" data-toggle="modal" data-target="#help_small_ModalLabel">帮助</a></li>
             <li><a href="#" data-toggle="modal" data-target="#delete_small_ModalLabel">退出</a></li>
           </ul>
-          <!-- <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form> -->
         </div>
       </div>
     </nav>

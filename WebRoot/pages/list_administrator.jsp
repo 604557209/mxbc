@@ -20,11 +20,12 @@ response.setDateHeader("Expires",0);
 <script src="<c:url value='/js/jquery.min.js'/>"></script>
 <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
 <script type="text/javascript">
-	function update_administrator(a_id){
+	function update_administrator(a_id,a_admin){
 		$("#up_a_id").val(a_id);
 		$("#up_a_username").val($("#l_a_username_"+a_id).text());
 		$("#up_a_password").val($("#l_a_password_"+a_id).text());
 		$("#up_a_tag").val($("#l_a_tag_"+a_id).text());
+		$("#up_a_admin").val(a_admin);
 	}
 	/* function deleteCus(id) {
 		if (confirm("删除确认")) {
@@ -34,9 +35,7 @@ response.setDateHeader("Expires",0);
 	} */
     </script>
 </head>
-<body
-	style="padding:0px;background:#f1f2f3 url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);height:auto">
-
+<body style="padding:0px;background:#f1f2f3 url(<%=request.getContextPath()%>/back_pic/back_pic.jpg);height:auto">
 	<div class="modal fade" id="add_update_Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"  align="left">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
@@ -48,6 +47,7 @@ response.setDateHeader("Expires",0);
 	        <form action="updateAdminAction.action" method="post">
 	        	<table width="100%" style="line-height:32px">
 			  	<input type="hidden" name="a_id" id="up_a_id"/>
+			  	<input type="hidden" name="a_admin" id="up_a_admin"/>
 			  	<tr>
 			  		<td width="125">管理区域</td>
 			  		<td>
@@ -93,15 +93,26 @@ response.setDateHeader("Expires",0);
 						</thead>
 						<tbody>
 							<c:forEach var="a" items="${list}">
-								<tr>
-									<td id="l_a_tag_${a.a_id}">${a.a_tag}</td>
-									<td id="l_a_username_${a.a_id}">${a.a_username}</td>
-									<td id="l_a_password_${a.a_id}">${a.a_password}</td>
-									<td>
-										<button type="button" class="btn btn-primary btn-xs" onclick="update_administrator(${a.a_id})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
-										<%-- <button type="button" class="btn btn-primary btn-danger btn-xs" onclick="deleteAdmin(${c.c_id})">删除</button> --%>
-									</td>
-								</tr>
+								<c:if test="${a.a_admin==0}">
+									<tr style="color:red;" color="red">
+										<td id="l_a_tag_${a.a_id}">${a.a_tag}</td>
+										<td id="l_a_username_${a.a_id}">${a.a_username}</td>
+										<td id="l_a_password_${a.a_id}">${a.a_password}</td>
+										<td>
+											<button type="button" class="btn btn-primary btn-xs" onclick="update_administrator(${a.a_id},${a.a_admin})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										</td>
+									</tr>
+								</c:if>
+								<c:if test="${a.a_admin==1}">
+									<tr>
+										<td id="l_a_tag_${a.a_id}">${a.a_tag}</td>
+										<td id="l_a_username_${a.a_id}">${a.a_username}</td>
+										<td id="l_a_password_${a.a_id}">${a.a_password}</td>
+										<td>
+											<button type="button" class="btn btn-primary btn-xs" onclick="update_administrator(${a.a_id},${a.a_admin})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										</td>
+									</tr>
+								</c:if>
 							</c:forEach>
 						</tbody>
 					</table>

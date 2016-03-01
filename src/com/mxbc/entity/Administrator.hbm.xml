@@ -13,5 +13,6 @@
 		<property name="a_username"/>
 		<property name="a_password"/>
 		<property name="a_tag"/>
+		<property name="a_admin"/>
 	</class>
 </hibernate-mapping>

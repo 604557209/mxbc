@@ -5,10 +5,21 @@
 <hibernate-configuration>
 	<session-factory>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- <property name="dialect">org.hibernate.dialect.SQLServerDialect</property> -->
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1:3307/mxbc?useUnicode=true&amp;characterEncoding=utf8</property>
+		<!-- <property name="connection.url">jdbc:sqlserver://127.0.0.1:1433;database=gtdata</property> -->
+		<!--
+			<property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>  
+        	<property name="myeclipse.connection.profile">SQL server 2008</property>
+        -->
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">950906</property>
+		<!-- ## MS SQL Server
+			#hibernate.dialect org.hibernate.dialect.SQLServerDialect
+			#hibernate.connection.username sa
+			#hibernate.connection.password sa 
+		-->
 		
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>

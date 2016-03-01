@@ -14,12 +14,12 @@ public class LoginAction extends ActionSupport {
 	private AdministratorDao administratorDao;
 	
 	public String login(){
-		if("admin".equals(username) && "password".equals(password)){
-			return "success_admin";
-		}else{
-			List<Administrator>list = administratorDao.findAllDao();
-			for(Administrator admin:list){
-				if(admin.getA_username().equals(username) && admin.getA_password().equals(password)){
+		List<Administrator>list = administratorDao.findAllDao();
+		for(Administrator admin:list){
+			if(admin.getA_username().equals(username) && admin.getA_password().equals(password)){
+				if(admin.getA_admin() == 0){
+					return "success_admin";
+				}else{
 					return "success_general";
 				}
 			}

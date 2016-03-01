@@ -44,47 +44,7 @@
 
 	<article id="popselectpanel_container" class="popselectpanel_container" style="width: 100%; height: 616px; top: 98px;">
 		<div id="content" class="content android_content_fixed" style="display: block;">
-			<div id="scroller" class="scroller">
-				<section class="section_padding">
-					<ul class="cell_container">
-						<li>
-							<div>客户编号：<span id="wc_c_num">${customer.c_num}</span></div>
-						</li>
-					</ul>
-				</section>
-				<section class="section_padding">
-					<h2 class="section_title">客户信息</h2>
-					<ul class="cell_container">
-						<li>
-							<div>姓名：<span id="wc_c_name">${customer.c_name}</span></div>
-						</li>
-						<li>
-							<div>电话：<span id="wc_c_phone">${customer.c_phone}</span></div>
-						</li>
-					</ul>
-				</section>
-				<section class="section_padding">
-					<h2 class="section_title">当前状态</h2>
-					<ul class="cell_container">
-						<li>
-							<div>审核状态：
-								<c:if test="${customer.c_state == 0}">
-									<span id="wc_c_state" style="color:blue">派单中</span>
-								</c:if>
-								<c:if test="${customer.c_state == 1}">
-									<span id="wc_c_state" style="color:blue">审核任务已派发，区域经理${customer.w_name}将为您审核店面</span>
-								</c:if>
-								<c:if test="${customer.c_state == 2}">
-									<span id="wc_c_state" style="color:blue">审核中，请耐心等待</span>
-								</c:if>
-								<c:if test="${customer.c_state == 3}">
-									<span id="wc_c_state" style="color:blue">审核完成，资料回传评定中，请耐心等待</span>
-								</c:if>
-							</div>
-						</li>
-					</ul>
-				</section>
-			</div>
+			<label style="color: red;text-align: center;width: 100%">请输入正确的编号与姓名！</label>
 		</div>
 		<footer class="android_footer_fixed" style="top: 48px; display: block;">
 		</footer>

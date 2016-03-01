@@ -49,7 +49,7 @@
 		<action name="wechatFindByNum" class="weChatAction"
 			method="findByNum">
 			<result name="normal">/pages/wechat.jsp</result>
-			<result name="error" type="redirect">/pages/wechat.jsp</result>
+			<result name="error">/pages/wechat_error.jsp</result>
 			<result name="pass">/pages/wechat_ac.jsp</result>
 			<result name="fail">/pages/wechat_fail.jsp</result>
 		</action>

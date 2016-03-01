@@ -188,7 +188,7 @@ response.setDateHeader("Expires",0);
 			<div class="main" style="height:auto">
 				<h2 class="sub-header">客户信息列表</h2>
 				<div class="table-responsive">
-					<table class="table table-striped" style="font-size:14px;">
+					<table class="table table-striped" style="font-size: 8px">
 						<thead>
 							<tr>
 								<th>编号</th>
@@ -204,10 +204,10 @@ response.setDateHeader("Expires",0);
 								<th>操作</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody style="font-size:8px">
 							<c:forEach var="c" items="${list}">
-								<tr>
-									<td id="l_c_num_${c.c_num}">${c.c_num}</td>
+								<tr style="font-size:8px">
+									<td style="font-size:8px" id="l_c_num_${c.c_num}">${c.c_num}</td>
 									<td id="l_c_name_${c.c_num}">${c.c_name}</td>
 									<input type="hidden" id="l_c_sex_${c.c_num}" value="${c.c_sex}"/>
 									<c:if test="${c.c_sex == 0}">

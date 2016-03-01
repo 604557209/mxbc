@@ -6,6 +6,7 @@ public class Administrator {
 	private String a_username;
 	private String a_password;
 	private String a_tag;
+	private int a_admin;
 	public int getA_id() {
 		return a_id;
 	}
@@ -29,6 +30,12 @@ public class Administrator {
 	}
 	public void setA_tag(String a_tag) {
 		this.a_tag = a_tag;
+	}
+	public int getA_admin() {
+		return a_admin;
+	}
+	public void setA_admin(int a_admin) {
+		this.a_admin = a_admin;
 	}
 	
 }

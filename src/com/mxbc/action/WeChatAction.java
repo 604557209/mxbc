@@ -47,10 +47,9 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 		}
 		//编号与姓名不匹配
 		else{
-			message = "请输入正确的编号与姓名！";
-			customer = null;
 			return "error";
 		}
+		message = "";
 		return "normal";
 	}
 	
