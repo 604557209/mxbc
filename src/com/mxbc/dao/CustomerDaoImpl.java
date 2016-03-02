@@ -1,10 +1,15 @@
 package com.mxbc.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.mxbc.entity.Customer;
+import com.mxbc.util.PageModel;
 
 
 public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao {
@@ -45,4 +50,53 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 		return super.getHibernateTemplate().find("from Customer customer where customer.c_area="+c_area+" order by customer.c_id desc");
 	}
 
+	//分页
+	@SuppressWarnings("unchecked")
+	public PageModel findByPage(final int pageNo,final int pageSize){
+		List<Customer> list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				return session.createQuery("from Customer")
+						.setFirstResult((pageNo - 1) * pageSize)
+						.setMaxResults(pageSize)
+						.list();
+			}
+		});
+		PageModel pageModel = new PageModel();
+		pageModel.setPageNo(pageNo);
+		pageModel.setPageSize(pageSize);
+		pageModel.setList(list);
+		pageModel.setTotalRecords((int)getTotalRecords());
+		
+		return pageModel;
+	}
+	
+	private long getTotalRecords(){
+		return (Long)getHibernateTemplate().find("select count(id) from Customer").get(0);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public PageModel findByPage_ByArea(final int pageNo,final int pageSize,final int c_area){
+		List<Customer> list = getHibernateTemplate().executeFind(new HibernateCallback() {
+			public Object doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				return session.createQuery("from Customer where c_area="+c_area)
+						.setFirstResult((pageNo - 1) * pageSize)
+						.setMaxResults(pageSize)
+						.list();
+			}
+		});
+		PageModel pageModel = new PageModel();
+		pageModel.setPageNo(pageNo);
+		pageModel.setPageSize(pageSize);
+		pageModel.setList(list);
+		pageModel.setTotalRecords((int)getTotalRecords_ByArea(c_area));
+		
+		return pageModel;
+	}
+	
+	private long getTotalRecords_ByArea(int c_area){
+		return (Long)getHibernateTemplate().find("select count(id) from Customer where c_area="+c_area).get(0);
+	}
+	
 }

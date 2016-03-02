@@ -2,9 +2,9 @@ package com.mxbc.action;
 
 import java.util.List;
 
-
 import com.mxbc.dao.CustomerDao;
 import com.mxbc.entity.Customer;
+import com.mxbc.util.PageModel;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -18,7 +18,10 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	
 	private CustomerDao customerDao;
 	
-	private List<Customer> list;
+//	private List<Customer> list;
+	private int pageNo;
+	private int pageSize;
+	private PageModel pageModel;
 	private Customer customer = new Customer();
 	
 //---------------------------------------------------------------
@@ -50,27 +53,29 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	}
 	
 	public String findAll(){
-		list = customerDao.findAllDao();
+//		list = customerDao.findAllDao();
+		pageModel = customerDao.findByPage(pageNo, pageSize);
 		return SUCCESS;
 	}
 	
-	public String findByNum(){
-		customer = customerDao.findByNumDao(customer.getC_num());
-		list = customerDao.findAllDao();
-		return SUCCESS;
-	}
+//	public String findByNum(){
+//		customer = customerDao.findByNumDao(customer.getC_num());
+//		list = customerDao.findAllDao();
+//		return SUCCESS;
+//	}
 	
 	public String findByArea(){
-		list = customerDao.findAllByAreaDao(customer.getC_area());
+//		list = customerDao.findAllByAreaDao(customer.getC_area());
+		pageModel = customerDao.findByPage_ByArea(pageNo, pageSize,customer.getC_area());
 		return SUCCESS;
 	}
 //---------------------------------------------------------------
-	public List<Customer> getList() {
-		return list;
-	}
-	public void setList(List<Customer> list) {
-		this.list = list;
-	}
+//	public List<Customer> getList() {
+//		return list;
+//	}
+//	public void setList(List<Customer> list) {
+//		this.list = list;
+//	}
 	public Customer getcustomer() {
 		return customer;
 	}
@@ -88,5 +93,29 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
 	public void setCustomerDao(CustomerDao customerDao) {
 		this.customerDao = customerDao;
+	}
+
+	public int getPageNo() {
+		return pageNo;
+	}
+
+	public void setPageNo(int pageNo) {
+		this.pageNo = pageNo;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public PageModel getPageModel() {
+		return pageModel;
+	}
+
+	public void setPageModel(PageModel pageModel) {
+		this.pageModel = pageModel;
 	}
 }
