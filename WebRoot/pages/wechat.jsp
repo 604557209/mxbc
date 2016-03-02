@@ -32,7 +32,7 @@
 	<form id="f_form" action="wechatFindByNum.action" method="post">
 	<header style="width: 100%">
 		<nav>
-			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
+			<h1 class="nav_title" id="nav_title">店面审核自助查询系统</h1>
 		</nav>
 		<section class="search_bar">
 			<input id="f_c_num" name="c_num" type="text" class="search_bar_input" placeholder="请输入编号"/>

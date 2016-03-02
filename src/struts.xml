@@ -34,10 +34,16 @@
 			<result name="success">/pages/list_customer.jsp</result>
 		</action>
 
-		<action name="findByNameCusEmpAction" class="customerAction"
+		<action name="findByNameCusAction" class="customerAction"
 			method="findByNum">
 			<result name="success">/list_customer.jsp</result>
 		</action>
+		
+		<action name="findByAreaCusAction" class="customerAction"
+			method="findByArea">
+			<result name="success">/pages/list_customer.jsp</result>
+		</action>
+		
 		<!-- 后台登录 -->
 		<action name="loginAction" class="com.mxbc.action.LoginAction"
 			method="login">

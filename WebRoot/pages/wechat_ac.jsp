@@ -42,7 +42,7 @@
 	<form id="f_form" action="wechatFindByNum.action" method="post">
 	<header style="width: 100%">
 		<nav>
-			<h1 class="nav_title" id="nav_title">蜜雪冰城店面审核自助查询系统</h1>
+			<h1 class="nav_title" id="nav_title">店面审核自助查询系统</h1>
 		</nav>
 		<section class="search_bar">
 			<input id="f_c_num" name="c_num" type="text" class="search_bar_input" placeholder="请输入编号"/>
@@ -81,7 +81,15 @@
 							<div>店面地址：<span id="wc_c_address">${customer.c_address}</span></div>
 						</li>
 						<li>
-							<div>店面所属区域：<span id="wc_c_area">${customer.c_area}</span></div>
+							<div>店面所属区域：
+								<span id="wc_c_area">
+									<c:if test="${customer.c_area == 0}">华中</c:if>
+									<c:if test="${customer.c_area == 1}">华东</c:if>
+									<c:if test="${customer.c_area == 2}">华西</c:if>
+									<c:if test="${customer.c_area == 3}">华南</c:if>
+									<c:if test="${customer.c_area == 4}">华北</c:if>
+								</span>
+							</div>
 						</li>
 					</ul>
 				</section>

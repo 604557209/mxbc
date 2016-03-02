@@ -17,4 +17,6 @@ public interface CustomerDao {
 	public List<Customer> findAllDao();
 	
 	public Customer findByNumDao(int c_num);
+	
+	public List<Customer> findAllByAreaDao(int c_area);
 }

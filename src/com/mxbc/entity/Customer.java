@@ -9,7 +9,7 @@ public class Customer {
 	private int c_sex;
 	private String c_phone;
 	private String c_address;
-	private String c_area;
+	private int c_area;
 	private String w_name;
 	private String w_phone;
 	private int c_state;
@@ -54,10 +54,10 @@ public class Customer {
 	public void setC_address(String c_address) {
 		this.c_address = c_address;
 	}
-	public String getC_area() {
+	public int getC_area() {
 		return c_area;
 	}
-	public void setC_area(String c_area) {
+	public void setC_area(int c_area) {
 		this.c_area = c_area;
 	}
 	public String getW_name() {

@@ -96,7 +96,14 @@
 			  	<tr>
 			  		<td width="125">所属区域</td>
 			  		<td>
-			  			<input class="check_value" name="c_area" style="line-height:22px;font-size:13px">
+			  			<!-- <input name="c_area" style="line-height:22px;font-size:13px"> -->
+			  			<select name="c_area">
+			  				<option value="0">华中</option>
+			  				<option value="1">华东</option>
+			  				<option value="2">华西</option>
+			  				<option value="3">华南</option>
+			  				<option value="4">华北</option>
+			  			</select>
 			  		</td>
 			  	</tr>
 			  	<tr>

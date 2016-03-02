@@ -27,14 +27,14 @@ response.setDateHeader("Expires",0);
 			$("#check_select_tr").attr("style","display:none");
 		}
 	}
-	function update_customer(num,id,t_name,t_phone){
+	function update_customer(num,id,t_name,t_phone,c_area){
 		$("#up_c_id").val(id);
 		$("#up_c_num").val($("#l_c_num_"+num).text());
 		$("#up_c_name").val($("#l_c_name_"+num).text());
 		$("#up_c_sex").val($("#l_c_sex_"+num).val());
 		$("#up_c_phone").val($("#l_c_phone_"+num).text());
 		$("#up_c_address").val($("#l_c_address_"+num).text());
-		$("#up_c_area").val($("#l_c_area_"+num).text());
+		$("#up_c_area").val(c_area);
 		$("#up_w_name").val($("#l_w_name_"+num).text());
 		$("#up_w_phone").val($("#l_w_phone_"+num).text());
 		$("#up_c_state").val($("#l_c_state_"+num).val());
@@ -109,7 +109,13 @@ response.setDateHeader("Expires",0);
 			  	<tr>
 			  		<td width="125">所属区域</td>
 			  		<td>
-			  			<input id="up_c_area" name="c_area" style="line-height:22px;font-size:13px">
+			  			<select name="c_area" id="up_c_area">
+							<option value="0">华中</option>
+			  				<option value="1">华东</option>
+			  				<option value="2">华西</option>
+			  				<option value="3">华南</option>
+			  				<option value="4">华北</option>
+						</select>
 			  		</td>
 			  	</tr>
 			  	<tr>
@@ -204,10 +210,10 @@ response.setDateHeader("Expires",0);
 								<th>操作</th>
 							</tr>
 						</thead>
-						<tbody style="font-size:8px">
+						<tbody style="font-size:14px">
 							<c:forEach var="c" items="${list}">
-								<tr style="font-size:8px">
-									<td style="font-size:8px" id="l_c_num_${c.c_num}">${c.c_num}</td>
+								<tr style="font-size:14px">
+									<td id="l_c_num_${c.c_num}">${c.c_num}</td>
 									<td id="l_c_name_${c.c_num}">${c.c_name}</td>
 									<input type="hidden" id="l_c_sex_${c.c_num}" value="${c.c_sex}"/>
 									<c:if test="${c.c_sex == 0}">
@@ -218,7 +224,13 @@ response.setDateHeader("Expires",0);
 									</c:if>
 									<td id="l_c_phone_${c.c_num}">${c.c_phone}</td>
 									<td id="l_c_address_${c.c_num}">${c.c_address}</td>
-									<td id="l_c_area_${c.c_num}">${c.c_area}</td>
+									<td id="l_c_area_${c.c_num}">
+										<c:if test="${c.c_area == 0}">华中</c:if>
+										<c:if test="${c.c_area == 1}">华东</c:if>
+										<c:if test="${c.c_area == 2}">华西</c:if>
+										<c:if test="${c.c_area == 3}">华南</c:if>
+										<c:if test="${c.c_area == 4}">华北</c:if>
+									</td>
 									<td id="l_w_name_${c.c_num}">${c.w_name}</td>
 									<td id="l_w_phone_${c.c_num}">${c.w_phone}</td>
 									<input type="hidden" id="l_c_state_${c.c_num}" value="${c.c_state}"/>
@@ -243,7 +255,7 @@ response.setDateHeader("Expires",0);
 									<td id="l_c_time_${c.c_num}">${c.c_time}</td>
 									<input type="hidden" id="l_c_fail_cause_${c.c_num}" value="${c.c_fail_cause}"/>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id},'${c.t_name}',${c.t_phone})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
+										<button type="button" class="btn btn-primary btn-xs" onclick="update_customer(${c.c_num},${c.c_id},'${c.t_name}',${c.t_phone},${c.c_area})" data-toggle="modal" data-target="#add_update_Modal">修改</button>
 										&nbsp;&nbsp;<button type="button" class="btn btn-primary btn-danger btn-xs" onclick="deleteCus(${c.c_id})">删除</button>
 									</td>
 								</tr>

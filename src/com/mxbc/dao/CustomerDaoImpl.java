@@ -40,4 +40,9 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 		return customer;
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Customer> findAllByAreaDao(int c_area) {
+		return super.getHibernateTemplate().find("from Customer customer where customer.c_area="+c_area+" order by customer.c_id desc");
+	}
+
 }

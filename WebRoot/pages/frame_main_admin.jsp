@@ -140,7 +140,12 @@
          </ul>
 		 <ul class="nav nav-sidebar">
             <li class="active"><a href="#">信息查看 <span class="sr-only">(current)</span></a></li>
-            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">客户信息列表</a></li>
+            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">全部客户信息列表</a></li>
+            <li id="li_6" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=0',6);">华中信息列表</a></li>
+            <li id="li_7" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=1',7);">华东信息列表</a></li>
+            <li id="li_8" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=2',8);">华西信息列表</a></li>
+            <li id="li_9" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=3',9);">华南信息列表</a></li>
+            <li id="li_10" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=4',10);">华北信息列表</a></li>
          </ul>
          <ul class="nav nav-sidebar">
             <li class="active"><a href="#">管理员 <span class="sr-only">(current)</span></a></li>

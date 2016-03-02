@@ -1,25 +1,26 @@
 package com.mxbc.util;
 
-import org.hibernate.cfg.Configuration;
-import org.hibernate.tool.hbm2ddl.SchemaExport;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.mxbc.dao.CustomerDao;
 
 public class Test {
 	public static void main(String[] args) {
 		
-		//读取配置文件
-		Configuration cf = new Configuration().configure();
+//		//读取配置文件
+//		Configuration cf = new Configuration().configure();
+//		
+//		//生成数据库
+//		//数据库设计方案
+//		SchemaExport export = new SchemaExport(cf);
+//		
+//		//1.是否显示SQL
+//		//2.是否覆盖原有数据库
+//		export.create(true, true);
 		
-		//生成数据库
-		//数据库设计方案
-		SchemaExport export = new SchemaExport(cf);
-		
-		//1.是否显示SQL
-		//2.是否覆盖原有数据库
-		export.create(true, true);
-		
-//		BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext*.xml");
-//		CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
-//		customerDao.delDao(2016006);
-		
+		BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext*.xml");
+		CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+		System.out.println(customerDao.findAllByAreaDao(1).get(0).getC_name());
 	}
 }

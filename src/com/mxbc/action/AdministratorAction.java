@@ -51,6 +51,7 @@ public class AdministratorAction extends ActionSupport implements ModelDriven<Ad
 		list = administratorDao.findAllDao();
 		return SUCCESS;
 	}
+	
 //---------------------------------------------------------------
 
 	public AdministratorDao getAdministratorDao() {

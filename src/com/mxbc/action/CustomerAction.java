@@ -59,6 +59,11 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		list = customerDao.findAllDao();
 		return SUCCESS;
 	}
+	
+	public String findByArea(){
+		list = customerDao.findAllByAreaDao(customer.getC_area());
+		return SUCCESS;
+	}
 //---------------------------------------------------------------
 	public List<Customer> getList() {
 		return list;
