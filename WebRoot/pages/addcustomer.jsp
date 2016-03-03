@@ -61,14 +61,14 @@
 			  	<tr>
 			  		<td width="125">编号</td>
 			  		<td>
-			  			<input class="check_value check_number" id="check_c_num" name="c_num" style="line-height:22px;font-size:13px">
+			  			<input class="check_value check_number form-control" id="check_c_num" name="c_num" placeholder="请避免重复 且仅能由数字组成" style="line-height:22px;font-size:13px;width:240px;"">
 			  			<span style="color: red; display: none;" id="warn_c_num">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  	<tr>
 			  		<td width="125">客户姓名</td>
 			  		<td>
-			  			<input class="check_value" name="c_name" style="line-height:22px;font-size:13px"">
+			  			<input class="check_value form-control" name="c_name" style="line-height:22px;font-size:13px;width:240px;">
 			  		</td>
 			  	</tr>
 			  	<tr>
@@ -83,14 +83,14 @@
 			  	<tr>
 			  		<td width="125">客户电话</td>
 			  		<td>
-			  			<input class="check_value check_number" id="check_c_phone" name="c_phone" style="line-height:22px;font-size:13px">
+			  			<input class="check_value check_number form-control" id="check_c_phone" name="c_phone" placeholder="仅能由数字组成" style="line-height:22px;font-size:13px;width:240px;">
 			  			<span style="color: red; display: none;" id="warn_c_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  	<tr>
 			  		<td width="125">店面地址</td>
 			  		<td>
-			  			<input class="check_value" name="c_address" style="line-height:22px;size:120;width:300px;font-size:13px">
+			  			<input class="check_value form-control" name="c_address" style="line-height:22px;size:120;width:300px;font-size:13px;width:240px;">
 			  		</td>
 			  	</tr>
 			  	<tr>
@@ -109,26 +109,26 @@
 			  	<tr>
 			  		<td width="125">区域经理姓名</td>
 			  		<td>
-			  			<input class="check_value" name="w_name" style="line-height:22px;font-size:13px">
+			  			<input class="check_value form-control" name="w_name" style="line-height:22px;font-size:13px;width:240px;">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">区域经理电话</td>
 			  		<td>
-			  			<input class="check_value check_number" id="check_w_phone" name="w_phone" style="line-height:22px;font-size:13px">
+			  			<input class="check_value check_number form-control" id="check_w_phone" name="w_phone" placeholder="仅能由数字组成" style="line-height:22px;font-size:13px;width:240px;">
 			  			<span style="color: red; display: none;" id="warn_w_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">投资顾问姓名</td>
 			  		<td>
-			  			<input class="check_value" name="t_name" style="line-height:22px;font-size:13px">
+			  			<input class="check_value form-control" name="t_name" style="line-height:22px;font-size:13px;width:240px;">
 			  		</td>
 			  	</tr>
 			  	<tr line-height="32px">
 			  		<td width="125">投资顾问电话</td>
 			  		<td>
-			  			<input class="check_value check_number" id="check_t_phone" name="t_phone" style="line-height:22px;font-size:13px">
+			  			<input class="check_value check_number form-control" id="check_t_phone" name="t_phone" placeholder="仅能由数字组成" style="line-height:22px;font-size:13px;width:240px;">
 			  			<span style="color: red; display: none;" id="warn_t_phone">仅能由数字组成</span>
 			  		</td>
 			  	</tr>

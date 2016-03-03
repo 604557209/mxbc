@@ -192,7 +192,7 @@ response.setDateHeader("Expires",0);
 	<nav class="navbar navbar-default" style="margin-top:2%;height:auto">
 		<div class="container-fluid" style="height:auto">
 			<div class="main" style="height:auto">
-				<h2 class="sub-header">客户信息列表</h2>
+				<h2 class="sub-header">华中客户信息列表</h2>
 				<div class="table-responsive">
 					<table class="table table-striped" style="font-size: 12px">
 						<thead>
@@ -272,10 +272,10 @@ response.setDateHeader("Expires",0);
 										<button type="button" class="btn btn-default">共${pageModel.totalPages}页</button>
 									</div>
 									<div class="btn-group" role="group">
-										<button type="button" class="btn btn-default" onclick="location='findAllCusAction.action?pageNo=${pageModel.previousPageNo}'">上一页</button>
-										<button type="button" class="btn btn-default" onclick="location='findAllCusAction.action?pageNo=${pageModel.nextPageNo}'">下一页</button>
-										<button type="button" class="btn btn-default" onclick="location='findAllCusAction.action?pageNo=${pageModel.topPageNo}'">首页</button>
-										<button type="button" class="btn btn-default" onclick="location='findAllCusAction.action?pageNo=${pageModel.bottomPageNo}'">末页</button>
+										<button type="button" class="btn btn-default" onclick="location='findByAreaCusAction.action?c_area=0&pageNo=${pageModel.previousPageNo}'">上一页</button>
+										<button type="button" class="btn btn-default" onclick="location='findByAreaCusAction.action?c_area=0&pageNo=${pageModel.nextPageNo}'">下一页</button>
+										<button type="button" class="btn btn-default" onclick="location='findByAreaCusAction.action?c_area=0&pageNo=${pageModel.topPageNo}'">首页</button>
+										<button type="button" class="btn btn-default" onclick="location='findByAreaCusAction.action?c_area=0&pageNo=${pageModel.bottomPageNo}'">末页</button>
 									</div>
 								</td>
 							</tr>

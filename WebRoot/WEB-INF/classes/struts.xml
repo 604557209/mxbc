@@ -41,7 +41,11 @@
 		
 		<action name="findByAreaCusAction" class="customerAction"
 			method="findByArea">
-			<result name="success">/pages/list_customer.jsp</result>
+			<result name="success_0">/pages/list_customer_byarea0.jsp</result>
+			<result name="success_1">/pages/list_customer_byarea1.jsp</result>
+			<result name="success_2">/pages/list_customer_byarea2.jsp</result>
+			<result name="success_3">/pages/list_customer_byarea3.jsp</result>
+			<result name="success_4">/pages/list_customer_byarea4.jsp</result>
 		</action>
 		
 		<!-- 后台登录 -->

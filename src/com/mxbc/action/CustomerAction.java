@@ -67,7 +67,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	public String findByArea(){
 //		list = customerDao.findAllByAreaDao(customer.getC_area());
 		pageModel = customerDao.findByPage_ByArea(pageNo, pageSize,customer.getC_area());
-		return SUCCESS;
+		return "success_"+customer.getC_area();
 	}
 //---------------------------------------------------------------
 //	public List<Customer> getList() {

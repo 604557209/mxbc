@@ -136,12 +136,12 @@
         <div class="col-sm-3 col-md-2 sidebar">
 		  <ul class="nav nav-sidebar">
             <li class="active"><a href="#">信息查看 <span class="sr-only">(current)</span></a></li>
-            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action',4);">客户信息列表</a></li>
-            <li id="li_6" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=0',6);">华中信息列表</a></li>
-            <li id="li_7" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=1',7);">华东信息列表</a></li>
-            <li id="li_8" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=2',8);">华西信息列表</a></li>
-            <li id="li_9" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=3',9);">华南信息列表</a></li>
-            <li id="li_10" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=4',10);">华北信息列表</a></li>
+            <li id="li_4" class="lihref"><a href="#" onclick="javascript:alter_href('findAllCusAction.action?pageNo=1&pageSize=15',4);">客户信息列表</a></li>
+            <li id="li_6" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=0&pageNo=1&pageSize=15',6);">华中信息列表</a></li>
+            <li id="li_7" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=1&pageNo=1&pageSize=15',7);">华东信息列表</a></li>
+            <li id="li_8" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=2&pageNo=1&pageSize=15',8);">华西信息列表</a></li>
+            <li id="li_9" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=3&pageNo=1&pageSize=15',9);">华南信息列表</a></li>
+            <li id="li_10" class="lihref"><a href="#" onclick="javascript:alter_href('findByAreaCusAction.action?c_area=4&pageNo=1&pageSize=15',10);">华北信息列表</a></li>
           </ul> 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2" style="height:100%;">
