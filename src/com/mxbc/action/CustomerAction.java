@@ -9,6 +9,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 
+@SuppressWarnings("unused")
 public class CustomerAction extends ActionSupport implements ModelDriven<Customer>{
 	
 	private static final long serialVersionUID = -1056099330002321491L;
@@ -19,6 +20,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	private CustomerDao customerDao;
 	
 //	private List<Customer> list;
+	private int f_area;
 	private int pageNo;
 	private int pageSize;
 	private PageModel pageModel;
@@ -49,7 +51,20 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		java.util.Date date = new java.util.Date();
 		customer.setC_time(date);
 		customerDao.updateDao(customer);
-		return SUCCESS;
+		if(f_area == 0){
+			return "success_0";
+		}else if(f_area == 1){
+			return "success_1";
+		}else if(f_area == 2){
+			return "success_2";
+		}else if(f_area == 3){
+			return "success_3";
+		}else if(f_area == 4){
+			return "success_4";
+		}else if(f_area == 5){
+			return "success_5";
+		}
+		return "success_0";
 	}
 	
 	public String findAll(){
@@ -117,5 +132,13 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 
 	public void setPageModel(PageModel pageModel) {
 		this.pageModel = pageModel;
+	}
+
+	public int getF_area() {
+		return f_area;
+	}
+
+	public void setF_area(int f_area) {
+		this.f_area = f_area;
 	}
 }

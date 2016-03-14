@@ -19,7 +19,7 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	private Customer customer = new Customer();
 	private String message = new String();
 	private static Date addInteger(Date date,int amount){
-		Date myDate = null;
+		Date myDate = new Date();
 		if(date != null){
 			Calendar c = Calendar.getInstance();
 			c.setTime(date);
@@ -29,27 +29,40 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 		return myDate;
 	}
 	public String findByNum() {
-		System.out.println(customer.getC_num()+"--------------->>>>>>>>>");
+		/*
+		 * 1.输入名与编号不匹配
+		 * 2.输入编号不存在
+		 * 3.审核通过
+		 * 4.审核失败
+		 * 5.审核正在进行
+		 */
+		if(customer.getC_name() == null){
+			return "error";
+		}
 		String c_name = customer.getC_name();
 		customer = customerDao.findByNumDao(customer.getC_num());
+		//存在这条记录
 		if(c_name.equals(customer.getC_name())){
-//			message = "详情请拨打400-***-**，进行人工查询。";
 			//审核通过
 			if(customer.getC_state() == 4){
+				System.out.println("审核已通过");
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 				message = sdf.format(addInteger(customer.getC_time(),3));
 				return "pass";
 			}
 			//审核未通过
 			else if(customer.getC_state() == 5){
+				System.out.println("审核未通过");
 				return "fail";
 			}
 		}
 		//编号与姓名不匹配
 		else{
+			System.out.println("编号与姓名不匹配");
 			return "error";
 		}
 		message = "";
+		System.out.println("不存在这条记录");
 		return "normal";
 	}
 	
@@ -65,7 +78,6 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	public void setMessage(String message) {
 		this.message = message;
 	}
-
 	public Customer getModel() {
 		return customer;
 	}
@@ -75,5 +87,4 @@ public class WeChatAction extends ActionSupport implements ModelDriven<Customer>
 	public void setCustomerDao(CustomerDao customerDao) {
 		this.customerDao = customerDao;
 	}
-	
 }

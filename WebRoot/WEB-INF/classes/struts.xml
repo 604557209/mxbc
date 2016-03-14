@@ -26,7 +26,12 @@
 
 		<action name="updateCusAction" class="customerAction"
 			method="update">
-			<result name="success" type="redirect">/findAllCusAction</result>
+			<result name="success_5" type="redirect">/findAllCusAction</result>
+			<result name="success_0" type="redirect">/findByAreaCusAction.action?c_area=0&amp;pageNo=1&amp;pageSize=15</result>
+			<result name="success_1" type="redirect">/findByAreaCusAction.action?c_area=1&amp;pageNo=1&amp;pageSize=15</result>
+			<result name="success_2" type="redirect">/findByAreaCusAction.action?c_area=2&amp;pageNo=1&amp;pageSize=15</result>
+			<result name="success_3" type="redirect">/findByAreaCusAction.action?c_area=3&amp;pageNo=1&amp;pageSize=15</result>
+			<result name="success_4" type="redirect">/findByAreaCusAction.action?c_area=4&amp;pageNo=1&amp;pageSize=15</result>
 		</action>
 
 		<action name="findAllCusAction" class="customerAction"
@@ -62,6 +67,7 @@
 			<result name="error">/pages/wechat_error.jsp</result>
 			<result name="pass">/pages/wechat_ac.jsp</result>
 			<result name="fail">/pages/wechat_fail.jsp</result>
+			<result name="input">/pages/wechat.jsp</result>
 		</action>
 		<!-- 管理员信息 -->
 		<action name="addAdminAction" class="administratorAction"

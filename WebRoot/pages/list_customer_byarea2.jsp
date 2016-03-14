@@ -20,6 +20,7 @@ response.setDateHeader("Expires",0);
 <script src="<c:url value='/js/jquery.min.js'/>"></script>
 <script src="<c:url value='/js/bootstrap.min.js'/>"></script>
 <script type="text/javascript">
+	$(function () { $("[data-toggle='tooltip']").tooltip(); });
 	function choose_fail(value){
 		if(value == 5){
 			$("#check_select_tr").attr("style","");
@@ -30,13 +31,13 @@ response.setDateHeader("Expires",0);
 	function update_customer(num,id,t_name,t_phone,c_area){
 		$("#up_c_id").val(id);
 		$("#up_c_num").val($("#l_c_num_"+num).text());
-		$("#up_c_name").val($("#l_c_name_"+num).text());
+		$("#up_c_name").val($("#l_c_name_"+num).val());
 		$("#up_c_sex").val($("#l_c_sex_"+num).val());
 		$("#up_c_phone").val($("#l_c_phone_"+num).text());
 		$("#up_c_address").val($("#l_c_address_"+num).text());
 		$("#up_c_area").val(c_area);
-		$("#up_w_name").val($("#l_w_name_"+num).text());
-		$("#up_w_phone").val($("#l_w_phone_"+num).text());
+		$("#up_w_name").val($("#l_w_name_"+num).val());
+		$("#up_w_phone").val($("#l_w_phone_"+num).val());
 		$("#up_c_state").val($("#l_c_state_"+num).val());
 		if($("#up_c_state").val() == 5){
 			var c_fail_cause_l = $("#l_c_fail_cause_"+num).val().split(", ");
@@ -70,7 +71,7 @@ response.setDateHeader("Expires",0);
 	        <h4 class="modal-title" id="add_update_ModalLabel">修改该客户信息：</h4>
 	      </div>
 	      <div class="modal-body">
-	        <form action="updateCusAction.action" method="post">
+	        <form action="updateCusAction.action?f_area=2" method="post">
 	        	<table width="100%" style="line-height:32px">
 			  	<input type="hidden" name="c_id" id="up_c_id"/>
 			  	<tr>
@@ -194,17 +195,15 @@ response.setDateHeader("Expires",0);
 			<div class="main" style="height:auto">
 				<h2 class="sub-header">华西客户信息列表</h2>
 				<div class="table-responsive">
-					<table class="table table-striped" style="font-size: 12px">
+					<table class="table table-hover table-striped" style="font-size: 12px">
 						<thead>
 							<tr>
 								<th>编号</th>
 								<th>客户姓名</th>
-								<th>客户性别</th>
 								<th>客户电话</th>
 								<th>店面地址</th>
 								<th>所属区域</th>
 								<th>区域经理姓名</th>
-								<th>区域经理电话</th>
 								<th>当前状态</th>
 								<th>更新时间</th>
 								<th>操作</th>
@@ -214,14 +213,16 @@ response.setDateHeader("Expires",0);
 							<c:forEach var="c" items="${pageModel.list}">
 								<tr style="font-size:14px">
 									<td id="l_c_num_${c.c_num}">${c.c_num}</td>
-									<td id="l_c_name_${c.c_num}">${c.c_name}</td>
+									<td>
+										<c:if test="${c.c_sex == 0}">
+											<a data-toggle="tooltip" data-placement="top" title="先生">${c.c_name}</a>
+										</c:if>
+										<c:if test="${c.c_sex == 1}">
+											<a data-toggle="tooltip" data-placement="top" title="女士">${c.c_name}</a>
+										</c:if>
+									</td>
+									<input type="hidden" id="l_c_name_${c.c_num}" value="${c.c_name}"/>
 									<input type="hidden" id="l_c_sex_${c.c_num}" value="${c.c_sex}"/>
-									<c:if test="${c.c_sex == 0}">
-										<td>先生</td>
-									</c:if>
-									<c:if test="${c.c_sex == 1}">
-										<td>女士</td>
-									</c:if>
 									<td id="l_c_phone_${c.c_num}">${c.c_phone}</td>
 									<td id="l_c_address_${c.c_num}">${c.c_address}</td>
 									<td id="l_c_area_${c.c_num}">
@@ -231,20 +232,23 @@ response.setDateHeader("Expires",0);
 										<c:if test="${c.c_area == 3}">华南</c:if>
 										<c:if test="${c.c_area == 4}">华北</c:if>
 									</td>
-									<td id="l_w_name_${c.c_num}">${c.w_name}</td>
-									<td id="l_w_phone_${c.c_num}">${c.w_phone}</td>
+									<td>
+										<input type="hidden" value="${c.w_name}" id="l_w_name_${c.c_num}">
+										<input type="hidden" value="${c.w_phone}" id="l_w_phone_${c.c_num}">
+										<a data-toggle="tooltip" data-placement="top" title="TEL-${c.w_phone}">${c.w_name}</a>									
+									</td>
 									<input type="hidden" id="l_c_state_${c.c_num}" value="${c.c_state}"/>
 									<c:if test="${c.c_state == 0}">
 										<td id="td_c_state_${c.c_state}" style="color:blue">派单中</td>
 									</c:if>
 									<c:if test="${c.c_state == 1}">
-										<td id="td_c_state_${c.c_state}" style="color:blue">审核任务已派发，区域经理${c.w_name}将审核店面</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核店面中</td>
 									</c:if>
 									<c:if test="${c.c_state == 2}">
-										<td id="td_c_state_${c.c_state}" style="color:blue">审核中，请耐心等待</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核中</td>
 									</c:if>
 									<c:if test="${c.c_state == 3}">
-										<td id="td_c_state_${c.c_state}" style="color:blue">审核完成，资料回传评定中，请耐心等待</td>
+										<td id="td_c_state_${c.c_state}" style="color:blue">审核完成评定资料中</td>
 									</c:if>
 									<c:if test="${c.c_state == 4}">
 										<td id="td_c_state_${c.c_state}" style="color:green">审核通过</td>

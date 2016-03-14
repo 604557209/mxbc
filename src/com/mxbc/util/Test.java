@@ -19,8 +19,9 @@ public class Test {
 //		//2.是否覆盖原有数据库
 //		export.create(true, true);
 		
-		BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext*.xml");
-		CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
-		System.out.println(customerDao.findAllByAreaDao(1).get(0).getC_name());
+//		BeanFactory beanFactory = new ClassPathXmlApplicationContext("applicationContext*.xml");
+//		CustomerDao customerDao = (CustomerDao)beanFactory.getBean("customerDao");
+//		System.out.println(customerDao.findAllByAreaDao(1).get(0).getC_name());
+//		System.out.println(System.getProperty("user.dir"));
 	}
 }

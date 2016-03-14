@@ -23,7 +23,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	}
 
 	public Customer toUpdateDao(int c_id) {
-		return (Customer)getHibernateTemplate().get(Customer.class, c_id);
+		return (Customer)super.getHibernateTemplate().get(Customer.class, c_id);
 	}
 
 	public void updateDao(Customer customer) {
@@ -38,7 +38,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	public Customer findByNumDao(int c_num) {
 		Customer customer = new Customer();
 		try{
-			customer = (Customer)getHibernateTemplate().find("from Customer as e where e.c_num="+c_num).get(0);
+			customer = (Customer)super.getHibernateTemplate().find("from Customer as e where e.c_num="+c_num).get(0);
 		}catch(java.lang.Exception e){
 			return customer;
 		}
@@ -53,13 +53,17 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	//分页
 	@SuppressWarnings("unchecked")
 	public PageModel findByPage(final int pageNo,final int pageSize){
-		List<Customer> list = getHibernateTemplate().executeFind(new HibernateCallback() {
+		List<Customer> list = super.getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				return session.createQuery("from Customer")
-						.setFirstResult((pageNo - 1) * pageSize)
-						.setMaxResults(pageSize)
-						.list();
+				try{
+					return session.createQuery("from Customer customer order by c_id desc")
+							.setFirstResult((pageNo - 1) * pageSize)
+							.setMaxResults(pageSize)
+							.list();
+				}finally{
+					session.close();
+				}
 			}
 		});
 		PageModel pageModel = new PageModel();
@@ -72,18 +76,22 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	}
 	
 	private long getTotalRecords(){
-		return (Long)getHibernateTemplate().find("select count(id) from Customer").get(0);
+		return (Long)super.getHibernateTemplate().find("select count(id) from Customer").get(0);
 	}
 	
 	@SuppressWarnings("unchecked")
 	public PageModel findByPage_ByArea(final int pageNo,final int pageSize,final int c_area){
-		List<Customer> list = getHibernateTemplate().executeFind(new HibernateCallback() {
+		List<Customer> list = super.getHibernateTemplate().executeFind(new HibernateCallback() {
 			public Object doInHibernate(Session session) throws HibernateException,
 					SQLException {
-				return session.createQuery("from Customer where c_area="+c_area)
-						.setFirstResult((pageNo - 1) * pageSize)
-						.setMaxResults(pageSize)
-						.list();
+				try{
+					return session.createQuery("from Customer where c_area="+c_area+" order by c_id desc")
+							.setFirstResult((pageNo - 1) * pageSize)
+							.setMaxResults(pageSize)
+							.list();
+				}finally{
+					session.close();
+				}
 			}
 		});
 		PageModel pageModel = new PageModel();
@@ -96,7 +104,7 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 	}
 	
 	private long getTotalRecords_ByArea(int c_area){
-		return (Long)getHibernateTemplate().find("select count(id) from Customer where c_area="+c_area).get(0);
+		return (Long)super.getHibernateTemplate().find("select count(id) from Customer where c_area="+c_area).get(0);
 	}
 	
 }
